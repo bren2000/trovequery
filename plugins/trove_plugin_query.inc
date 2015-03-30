@@ -4,6 +4,12 @@
  * Views query plugin for Trove Query.
  */
 
+use Drupal\trove\TroveApi;
+use Drupal\trove\TroveApiContributor;
+use Drupal\trove\TroveApiResult;
+use Drupal\trove\TroveApiRecord;
+use Drupal\trove\TroveApiNewspaperTitle;
+
 /**
  * Views query plugin for the Trove Query results.
  */
@@ -44,14 +50,16 @@ class TrovePluginQuery extends views_plugin_query {
     // paging.
     $this->required_fields = array();
     $this->ensure_table($base_table);
+    dpm($base_table);
   }
   /**
    * Ensure table.
    */
   public function ensure_table($table) {
     if (!isset($this->request)) {
-      $this->request = TroveApi::factory($table);
+      $this->request = Drupal\trove\TroveApi::factory('result');
     }
+    dpm($this);
   }
 
 
@@ -153,8 +161,9 @@ class TrovePluginQuery extends views_plugin_query {
    * Set a filter on the query object.
    */
   public function add_filter($field, $value, $operator = '=') {
+    dpm($this->request);
     // $this->ensure_table($table);
-    $this->request->set_filter($field, $value);
+    $this->request->setFilter($field, $value);
   }
 
   /**

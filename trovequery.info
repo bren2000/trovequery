@@ -2,6 +2,7 @@ name = Trove Views Query
 description = Trove API views integration.
 core = 7.x
 package = Trove
+
 dependencies[] = trove
 dependencies[] = views
 

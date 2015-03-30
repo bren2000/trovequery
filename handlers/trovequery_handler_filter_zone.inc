@@ -31,7 +31,6 @@ class TrovequeryHandlerFilterZone extends views_handler_filter_in_operator {
           $this->query->add_where($this->options['group'], $this->definition['trovequery']['arg'], 'all');
         }
         else {
-
           $this->query->add_where($this->options['group'], $this->definition['trovequery']['arg'], implode($this->value, ','));
         }
       }

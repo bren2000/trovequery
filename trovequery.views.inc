@@ -7,6 +7,13 @@
 /**
  * Implements hook_views_plugins().
  */
+
+use Drupal\trove\TroveApi;
+use Drupal\trove\TroveApiContributor;
+use Drupal\trove\TroveApiResult;
+use Drupal\trove\TroveApiRecord;
+use Drupal\trove\TroveApiNewspaperTitle;
+
 function trovequery_views_plugins() {
   $plugin = array();
   $plugin['query']['TrovePluginQuery'] = array(
@@ -43,7 +50,7 @@ function trovequery_views_data() {
       'help' => t('Keyword filter on the title field.'),
       'trovequery' => array(
         'arg' => 'q',
-        'method' => 'result',
+        'method' => TROVE_RESULT,
         'index' => 'title',
       ),
     ),
@@ -58,7 +65,7 @@ function trovequery_views_data() {
       'label' => t('The ISBN of the item.'),
       'trovequery' => array(
         'arg' => 'q',
-        'method' => 'result',
+        'method' => TROVE_RESULT,
         'index' => 'isbn',
       ),
     ),
@@ -73,7 +80,7 @@ function trovequery_views_data() {
       'label' => t('The ISSN of the item.'),
       'trovequery' => array(
         'arg' => 'q',
-        'method' => 'result',
+        'method' => TROVE_RESULT,
         'index' => 'issn',
       ),
     ),
@@ -88,7 +95,7 @@ function trovequery_views_data() {
       'label' => t('The work number of the item.'),
       'trovequery' => array(
         'arg' => 'q',
-        'method' => 'result',
+        'method' => TROVE_RESULT,
         'index' => 'id',
       ),
     ),
@@ -111,7 +118,7 @@ function trovequery_views_data() {
       'use equal' => TRUE,
       'trovequery' => array(
         'arg' => 'q',
-        'method' => 'result',
+        'method' => TROVE_RESULT,
         'index' => 'has',
         'value' => 'tags',
       ),
@@ -135,7 +142,7 @@ function trovequery_views_data() {
       'label' => t('Comments date range'),
       'trovequery' => array(
         'arg' => 'q',
-        'method' => 'result',
+        'method' => TROVE_RESULT,
         'index' => 'commentlastupdated',
       ),
     ),
@@ -150,7 +157,7 @@ function trovequery_views_data() {
       'label' => t('Last updated date'),
       'trovequery' => array(
         'arg' => 'q',
-        'method' => 'result',
+        'method' => TROVE_RESULT,
         'index' => 'lastupdated',
       ),
     ),
@@ -191,7 +198,7 @@ function trovequery_views_data() {
       'label' => t('The item has comments?'),
       'trovequery' => array(
         'arg' => 'q',
-        'method' => 'result',
+        'method' => TROVE_RESULT,
         'index' => 'has',
         'value' => 'comments',
       ),
@@ -213,7 +220,7 @@ function trovequery_views_data() {
       'handler' => 'TrovequeryHandlerFilterQuery',
       'trovequery' => array(
         'arg' => 'q',
-        'method' => 'result',
+        'method' => TROVE_RESULT,
       ),
     ),
   );
@@ -225,8 +232,8 @@ function trovequery_views_data() {
       'handler' => 'TrovequeryHandlerFilterFacet',
       'trovequery' => array(
         'arg' => 'l-format',
-        'method' => 'result',
-        'facets_method' => 'troveGetFacetsFormat',
+        'method' => TROVE_RESULT,
+        'facets_method' => 'trove_get_facets_format',
       ),
     ),
   );
@@ -238,8 +245,8 @@ function trovequery_views_data() {
       'handler' => 'TrovequeryHandlerFilterFacet',
       'trovequery' => array(
         'arg' => 'l-availability',
-        'method' => 'result',
-        'facets_method' => 'troveGetFacetsAvailability',
+        'method' => TROVE_RESULT,
+        'facets_method' => 'trove_get_facets_availability',
       ),
     ),
   );
@@ -255,8 +262,8 @@ function trovequery_views_data() {
       'help' => t('Filter results based on trove zones'),
       'trovequery' => array(
         'arg' => 'zone',
-        'method' => 'result',
-        'zones_method' => 'troveGetZones',
+        'method' => TROVE_RESULT,
+        'zones_method' => 'trove_get_zones',
       ),
     ),
   );
@@ -295,8 +302,8 @@ function trovequery_views_data() {
       'handler' => 'TrovequeryHandlerFilterFacet',
       'trovequery' => array(
         'arg' => 'l-category',
-        'method' => 'result',
-        'facets_method' => 'troveGetFacetsCategory',
+        'method' => TROVE_RESULT,
+        'facets_method' => 'trove_get_facets_category',
       ),
     ),
   );
@@ -332,9 +339,9 @@ function trovequery_views_data() {
       'help' => t('Filter by NUC (ID of organisation who has a copy of this work).'),
       'trovequery' => array(
         'arg' => 'q',
-        'method' => 'result',
+        'method' => TROVE_RESULT,
         'index' => 'nuc',
-        'index_method' => 'troveGetIndexContributors',
+        'index_method' => 'trove_get_index_contributors',
       ),
     ),
   );
