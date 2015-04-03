@@ -31,15 +31,15 @@ function trovequery_views_plugins() {
 function trovequery_views_data() {
   $data = array();
 
-  $data['trovequery']['table']['group']  = t('Trove Results');
-  $data['trovequery']['table']['base'] = array(
+  $data[TROVE_RESULT]['table']['group']  = t('Trove Results');
+  $data[TROVE_RESULT]['table']['base'] = array(
     'title' => t('Trove Results'),
     'help' => t('Query Trove.'),
     'field' => 'title',
     'query class' => 'TrovePluginQuery',
   );
 
-  $data['trovequery']['title'] = array(
+  $data[TROVE_RESULT]['title'] = array(
     'title' => t('title'),
     'help' => t('The title of this result.'),
     'field' => array(
@@ -56,7 +56,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['isbn'] = array(
+  $data[TROVE_RESULT]['isbn'] = array(
     'title' => t('ISBN'),
     'help' => t('The ISBN for this result.'),
     'filter' => array(
@@ -71,7 +71,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['issn'] = array(
+  $data[TROVE_RESULT]['issn'] = array(
     'title' => t('ISSN'),
     'help' => t('The ISSN for this result.'),
     'filter' => array(
@@ -86,7 +86,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['id'] = array(
+  $data[TROVE_RESULT]['id'] = array(
     'title' => t('id'),
     'help' => t('The work number of this item.'),
     'filter' => array(
@@ -101,7 +101,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['tag'] = array(
+  $data[TROVE_RESULT]['tag'] = array(
     'title' => t('tag'),
     'help' => t('Tags associated with this item.'),
     'field' => array(
@@ -125,7 +125,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['date'] = array(
+  $data[TROVE_RESULT]['date'] = array(
     'title' => t('date'),
     'help' => t("Date of publication"),
     'field' => array(
@@ -133,7 +133,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['comments_date'] = array(
+  $data[TROVE_RESULT]['comments_date'] = array(
     'title' => t('comments date'),
     'help' => t('Comments posted on this date.'),
     'filter' => array(
@@ -148,7 +148,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['lastupdated'] = array(
+  $data[TROVE_RESULT]['lastupdated'] = array(
     'title' => t('last updated'),
     'help' => t('The date the item was last updated.'),
     'filter' => array(
@@ -163,7 +163,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['relevance_sort'] = array(
+  $data[TROVE_RESULT]['relevance_sort'] = array(
     'title' => t('relevance'),
     'sort' => array(
       'handler' => 'TrovequeryHandlerSortRelevance',
@@ -172,7 +172,7 @@ function trovequery_views_data() {
       'sort order' => 'relevance',
     ),
   );
-  $data['trovequery']['date_sort'] = array(
+  $data[TROVE_RESULT]['date_sort'] = array(
     'title' => t('date sort'),
     'sort' => array(
       'handler' => 'TrovequeryHandlerSortDate',
@@ -182,7 +182,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['comment'] = array(
+  $data[TROVE_RESULT]['comment'] = array(
     'title' => t('comment'),
     'help' => t('Comments associated with this item.'),
     'field' => array(
@@ -205,7 +205,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['trove_url'] = array(
+  $data[TROVE_RESULT]['trove_url'] = array(
     'title' => t('trove url'),
     'help' => t('The url of this result.'),
     'field' => array(
@@ -213,7 +213,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['query'] = array(
+  $data[TROVE_RESULT]['query'] = array(
     'title' => t('query'),
     'help' => t('The query keywords'),
     'filter' => array(
@@ -225,7 +225,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['facet_article'] = array(
+  $data[TROVE_RESULT]['facet_article'] = array(
     'title' => t('article format'),
     'help' => t('The article format facet to filter on'),
     'filter' => array(
@@ -238,7 +238,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['facet_availaility'] = array(
+  $data[TROVE_RESULT]['facet_availaility'] = array(
     'title' => t('availability'),
     'help' => t('Filter on whether the item is online or not.'),
     'filter' => array(
@@ -251,7 +251,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['zone'] = array(
+  $data[TROVE_RESULT]['zone'] = array(
     'title' => t('zone'),
     'help' => t('The trove zone this work belongs to'),
     'field' => array(
@@ -268,7 +268,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['contributor'] = array(
+  $data[TROVE_RESULT]['contributor'] = array(
     'title' => t('contributor'),
     'help' => t('The contibutor of this work.'),
     'field' => array(
@@ -276,7 +276,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['tid'] = array(
+  $data[TROVE_RESULT]['tid'] = array(
     'title' => t('tid'),
     'help' => t('The Trove id of this work.'),
     'field' => array(
@@ -284,7 +284,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['snippet'] = array(
+  $data[TROVE_RESULT]['snippet'] = array(
     'title' => t('snippet'),
     'help' => t('A snippet of this work.'),
     'field' => array(
@@ -292,7 +292,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['category'] = array(
+  $data[TROVE_RESULT]['category'] = array(
     'title' => t('category'),
     'help' => t('The category of this work.'),
     'field' => array(
@@ -308,7 +308,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['lists'] = array(
+  $data[TROVE_RESULT]['lists'] = array(
     'title' => t('lists'),
     'help' => t('Lists associated with this item.'),
     'field' => array(
@@ -320,7 +320,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['image'] = array(
+  $data[TROVE_RESULT]['image'] = array(
     'title' => t('image'),
     'help' => t('The image for the Trove work - if available.'),
     'field' => array(
@@ -328,7 +328,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data['trovequery']['holdings_nuc'] = array(
+  $data[TROVE_RESULT]['holdings_nuc'] = array(
     'title' => t('holdings:nuc'),
     'help' => t('The NUC symbol of an organisation with a copy of this work.'),
     'field' => array(
