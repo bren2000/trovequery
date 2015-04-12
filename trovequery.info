@@ -8,16 +8,18 @@ dependencies[] = views
 
 files[] = TrovequeryResult.inc
 
-files[] = handlers/trovecontrib_handler_filter_query.inc
-files[] = handlers/troveitem_handler_filter_string.inc
+files[] = handlers/trovequery_handler_field_multiple.inc
 files[] = handlers/trovequery_handler_field_title.inc
 files[] = handlers/trovequery_handler_field_contributor.inc
 files[] = handlers/trovequery_handler_field_tid.inc
 files[] = handlers/trovequery_handler_field_date.inc
+files[] = handlers/trovequery_handler_field_holding.inc
 files[] = handlers/trovequery_handler_field_image.inc
 files[] = handlers/trovequery_handler_field_url.inc
 files[] = handlers/trovequery_handler_field_string.inc
 files[] = handlers/trovequery_handler_field_include.inc
+files[] = handlers/trovequery_handler_field_numeric.inc
+files[] = handlers/trovequeryHandlerFieldContributor.inc
 files[] = handlers/trovequery_handler_field_include_list.inc
 files[] = handlers/trovequery_handler_field_snippet.inc
 files[] = handlers/trovequery_handler_relationship.inc
@@ -30,4 +32,9 @@ files[] = handlers/trovequery_handler_filter_holding.inc
 files[] = handlers/trovequery_handler_filter_date.inc
 files[] = handlers/trovequery_handler_sort_date.inc
 files[] = handlers/trovequery_handler_sort_relevance.inc
+
+files[] = handlers/troveitem_handler_filter_string.inc
+
+files[] = handlers/trovecontrib_handler_filter_query.inc
+
 files[] = plugins/trove_plugin_query.inc
