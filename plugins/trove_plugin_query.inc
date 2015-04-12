@@ -19,7 +19,7 @@ class TrovePluginQuery extends views_plugin_query {
    * An array of sections of the WHERE query. Each section is in itself
    * an array of pieces. All AND by default.
    */
-  protected $where = array();
+  public $where = array();
 
   /*
    * Array of all encountered errors.
@@ -50,16 +50,16 @@ class TrovePluginQuery extends views_plugin_query {
     // paging.
     $this->required_fields = array();
     $this->ensure_table($base_table);
-    dpm($base_table);
+    //dpm($base_table);
   }
   /**
    * Ensure table.
    */
-  public function ensure_table($table) {
+  public function ensure_table($table, $relationship = NULL, $join = NULL) {
     if (!isset($this->request)) {
-      $this->request = Drupal\trove\TroveApi::factory('result');
+      $this->request = new TrovequeryResult($table);
     }
-    dpm($this);
+    //dpm($this);
   }
 
 
@@ -161,9 +161,13 @@ class TrovePluginQuery extends views_plugin_query {
    * Set a filter on the query object.
    */
   public function add_filter($field, $value, $operator = '=') {
-    dpm($this->request);
+    //dpm($this->request);
     // $this->ensure_table($table);
     $this->request->setFilter($field, $value);
+  }
+
+  public function add_field($table, $field, $alias = '', $params = array()) {
+    //do nothing
   }
 
   /**
@@ -186,7 +190,7 @@ class TrovePluginQuery extends views_plugin_query {
 
 
   /**
-   * Executes query and fill the associated view object with according values.
+   * Executes query and fill the associated view object with values.
    *
    * Values to set: $view->result, $view->total_rows, $view->execute_time,
    * $view->pager['current_page'].
@@ -223,7 +227,6 @@ class TrovePluginQuery extends views_plugin_query {
 
       $this->pager->total_items = $this->request->getTotalResults();
       $this->pager->update_page_info();
-
     }
     catch (Exception $e) {
       $this->errors[] = $e->getMessage();
