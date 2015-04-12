@@ -303,9 +303,9 @@ function trovequery_views_data() {
 
   $data[TROVE_RESULT]['category'] = array(
     'title' => t('Category'),
-    'help' => t('The category of this work.'),
+    'help' => t('The category of this work, only applies to Nespapers.'),
     'field' => array(
-      'handler' => 'TrovequeryHandlerFieldTitle',
+      'handler' => 'TrovequeryHandlerFieldString',
     ),
     'filter' => array(
       'handler' => 'TrovequeryHandlerFilterFacet',
