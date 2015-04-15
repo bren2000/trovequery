@@ -329,9 +329,9 @@ function trovequery_views_data() {
     ),
   );
 
-  $data[TROVE_RESULT]['image'] = array(
+  $data[TROVE_RESULT]['identifier'] = array(
     'title' => t('Image'),
-    'help' => t('The image for the Trove work - if available.'),
+    'help' => t('A thumbnail image for the work - if available.'),
     'field' => array(
       'handler' => 'TrovequeryHandlerFieldImage',
     ),

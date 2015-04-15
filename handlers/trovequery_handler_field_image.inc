@@ -24,11 +24,18 @@ class TrovequeryHandlerFieldImage extends views_handler_field {
    * Render the field.
    */
   public function render($values) {
-    if (isset($values->image)) {
-      $variables = array(
-        'path' => $values->{$this->field},
-      );
-      return theme('image', $variables);
+    if (isset($values->{$this->field}) && is_array($values->{$this->field})) {
+      foreach ($values->{$this->field} as $identifier) {
+        if ($identifier['linktype'] == 'thumbnail') {
+          $path = $identifier['value'];
+        }
+      }
+      if(isset($path)) {
+        $variables = array(
+          'path' => $path,
+        );
+        return theme('image', $variables);
+      }
     }
   }
 
