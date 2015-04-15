@@ -11,7 +11,7 @@
  * gets set properly, and that none of the sql-specific query functionality
  * gets called.
  */
-class TrovequeryHandlerFieldTid extends views_handler_field {
+class TrovequeryHandlerFieldId extends views_handler_field {
 
   /**
    * Called to add the field to a query.

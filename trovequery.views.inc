@@ -97,11 +97,14 @@ function trovequery_views_data() {
 
   $data[TROVE_RESULT]['id'] = array(
     'title' => t('ID'),
-    'help' => t('The work number of this item.'),
+    'help' => t('The work ID.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldId',
+    ),
     'filter' => array(
       'handler' => 'TrovequeryHandlerFilterIncludeString',
       'help' => t('Filter on work number (ID).'),
-      'label' => t('The work number of the item.'),
+      'label' => t('The work ID.'),
       'trovequery' => array(
         'arg' => 'q',
         'method' => TROVE_RESULT,
@@ -282,14 +285,6 @@ function trovequery_views_data() {
     'help' => t('The contibutor of this work.'),
     'field' => array(
       'handler' => 'TrovequeryHandlerFieldContributor',
-    ),
-  );
-
-  $data[TROVE_RESULT]['tid'] = array(
-    'title' => t('Trove ID'),
-    'help' => t('The Trove id of this work.'),
-    'field' => array(
-      'handler' => 'TrovequeryHandlerFieldTid',
     ),
   );
 
