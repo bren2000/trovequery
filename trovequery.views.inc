@@ -317,11 +317,11 @@ function trovequery_views_data() {
     ),
   );
 
-  $data[TROVE_RESULT]['lists'] = array(
+  $data[TROVE_RESULT]['list'] = array(
     'title' => t('Lists'),
     'help' => t('Lists associated with this item.'),
     'field' => array(
-      'handler' => 'TrovequeryHandlerFieldInclude',
+      'handler' => 'TrovequeryHandlerFieldList',
       'trovequery' => array(
         'arg' => 'include',
         'value' => 'lists',
