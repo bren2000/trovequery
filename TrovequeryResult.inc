@@ -18,16 +18,17 @@ class TrovequeryResult extends TroveApiResult {
         foreach ($zone['records']['article'] as $work) {
           $results[] = $this->buildRow($work, $zoneName);
         }
-      } elseif (isset($zone['records']['people'])) {
-        foreach ($zone['records']['people'] as $work) {
-          $results[] = $this->buildRow($work, $zoneName);
-        }
+      // } elseif (isset($zone['records']['people'])) {
+      //   foreach ($zone['records']['people'] as $work) {
+      //     $results[] = $this->buildRow($work, $zoneName);
+      //   }
       } elseif (isset($zone['records']['list'])) {
         foreach ($zone['records']['list'] as $work) {
           $results[] = $this->buildRow($work, $zoneName);
         }
       }
     }
+    dpm($results);
     return $results;
   }
 
@@ -37,6 +38,7 @@ class TrovequeryResult extends TroveApiResult {
     foreach ($work as $key => $value) {
       $row->{$key} = $value;
     }
+    //dpm(get_class_methods('TrovequeryResult'));
     return $row;
   }
 
