@@ -218,8 +218,8 @@ function trovequery_views_data() {
   );
 
   $data[TROVE_RESULT]['troveUrl'] = array(
-    'title' => t('Trove url'),
-    'help' => t('The url of this result.'),
+    'title' => t('Trove URL'),
+    'help' => t('The Trove URL of this result.'),
     'field' => array(
       'handler' => 'TrovequeryHandlerFieldUrl',
     ),
