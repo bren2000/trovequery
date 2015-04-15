@@ -233,6 +233,14 @@ function trovequery_views_data() {
     ),
   );
 
+  $data[TROVE_RESULT]['type'] = array(
+    'title' => t('Type'),
+    'help' => t('The format of this work. There may be more than one type element.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldType',
+    ),
+  );
+
   $data[TROVE_RESULT]['query'] = array(
     'title' => t('Query'),
     'help' => t('The query keywords'),

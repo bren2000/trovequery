@@ -21,6 +21,7 @@ files[] = handlers/trovequery_handler_field_tag.inc
 files[] = handlers/trovequery_handler_field_url.inc
 files[] = handlers/trovequery_handler_field_string.inc
 files[] = handlers/trovequery_handler_field_include.inc
+files[] = handlers/trovequery_handler_field_type.inc
 files[] = handlers/trovequery_handler_field_numeric.inc
 files[] = handlers/trovequery_handler_field_snippet.inc
 files[] = handlers/trovequery_handler_relationship.inc
