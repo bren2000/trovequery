@@ -225,6 +225,14 @@ function trovequery_views_data() {
     ),
   );
 
+  $data[TROVE_RESULT]['issued'] = array(
+    'title' => t('Date issued'),
+    'help' => t('The year/s this work was issued, created or published. May also include month and day. May be a range.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldString',
+    ),
+  );
+
   $data[TROVE_RESULT]['query'] = array(
     'title' => t('Query'),
     'help' => t('The query keywords'),
