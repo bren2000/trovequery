@@ -90,7 +90,7 @@ function trovequery_views_data() {
     'title' => t('Relevance'),
     'help' => t('The relevance of this result in the search.'),
     'field' => array(
-      'handler' => 'TrovequeryHandlerFieldString',
+      'handler' => 'TrovequeryHandlerFieldRelevance',
     ),
   );
 

@@ -53,7 +53,6 @@ class TrovequeryHandlerFieldList extends views_handler_field {
    * Render output based on options settings.
    */
   public function render($values) {
-    dpm($this->field);
     if (isset($values->{$this->field}) && is_array($values->{$this->field})) {
       $lists = array();
       foreach ($values->{$this->field} as $list) {
