@@ -60,7 +60,7 @@ class TrovequeryHandlerFieldList extends views_handler_field {
           $tmp = 'List: ' . $list['value'];
         }
         else {
-          $tmp .= 'List: ' . check_plain($list['value']);
+          $tmp = 'List: ' . check_plain($list['value']);
         }
         $tmp .= 'By: ' . $list['by'];
         $tmp .= 'Last updated: ' . $list['lastupdated'];
