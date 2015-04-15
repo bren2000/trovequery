@@ -8,6 +8,7 @@ dependencies[] = views
 
 files[] = TrovequeryResult.inc
 
+files[] = handlers/trovequery_handler_field_comment.inc
 files[] = handlers/trovequery_handler_field_multiple.inc
 files[] = handlers/trovequery_handler_field_title.inc
 files[] = handlers/trovequery_handler_field_contributor.inc

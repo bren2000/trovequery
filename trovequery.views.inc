@@ -195,7 +195,7 @@ function trovequery_views_data() {
     'title' => t('Comment'),
     'help' => t('Comments associated with this item.'),
     'field' => array(
-      'handler' => 'TrovequeryHandlerFieldInclude',
+      'handler' => 'TrovequeryHandlerFieldComment',
       'trovequery' => array(
         'arg' => 'include',
         'value' => 'comments',
