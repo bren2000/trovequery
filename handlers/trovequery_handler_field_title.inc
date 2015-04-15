@@ -69,7 +69,11 @@ class TrovequeryHandlerFieldTitle extends views_handler_field {
    * Render output based on options settings.
    */
   public function render($values) {
-    $value = $this->get_value($values);
+    //$value = $this->get_value($values);
+    $value = $values->{$this->field};
+    if (is_array($value)) {
+      $value = $value['value'];
+    }
     return $this->render_link($this->sanitize_value($value), $values);
   }
 }
