@@ -62,9 +62,9 @@ class TrovequeryHandlerFieldList extends views_handler_field {
         else {
           $tmp = 'List: ' . check_plain($list['value']);
         }
-        $tmp .= 'By: ' . $list['by'];
-        $tmp .= 'Last updated: ' . $list['lastupdated'];
-        $tmp .= 'URL: ' . $list['url'];
+        $tmp .= ', By: <span class="list-author">' . $list['by'];
+        $tmp .= '</span>, Last updated: <span class="list-last-updated">' . $list['lastupdated'];
+        $tmp .= '</span>';
         $lists[] = $tmp;
       }
       return theme('item_list', array('items' => $lists,
