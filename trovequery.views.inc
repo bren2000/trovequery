@@ -165,6 +165,14 @@ function trovequery_views_data() {
     ),
   );
 
+  $data[TROVE_RESULT]['abstract'] = array(
+    'title' => t('Abstract'),
+    'help' => t("A description, summary, abstract, or first few words of this work, if available."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldType',
+    ),
+  );
+
   $data[TROVE_RESULT]['comments_date'] = array(
     'title' => t('Comments date'),
     'help' => t('Comments posted on this date.'),
