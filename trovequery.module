@@ -4,6 +4,10 @@
  * Module file for trovequery module.
  */
 
+// define the Trove URL.
+define('TROVE_URL', 'http://trove.nla.gov.au');
+
+
 /**
  * Implements hook_views_api().
  */

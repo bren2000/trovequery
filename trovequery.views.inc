@@ -145,6 +145,14 @@ function trovequery_views_data() {
     ),
   );
 
+  $data[TROVE_RESULT]['isPartOf'] = array(
+    'title' => t('Is part of'),
+    'help' => t("For articles, the journal or periodical this article belongs to (if known)."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldPartOf',
+    ),
+  );
+
   $data[TROVE_RESULT]['comments_date'] = array(
     'title' => t('Comments date'),
     'help' => t('Comments posted on this date.'),
