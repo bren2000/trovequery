@@ -20,6 +20,7 @@ files[] = handlers/trovequery_handler_field_image.inc
 files[] = handlers/trovequery_handler_field_tag.inc
 files[] = handlers/trovequery_handler_field_url.inc
 files[] = handlers/trovequery_handler_field_partof.inc
+files[] = handlers/trovequery_handler_field_subject.inc
 files[] = handlers/trovequery_handler_field_string.inc
 files[] = handlers/trovequery_handler_field_include.inc
 files[] = handlers/trovequery_handler_field_type.inc

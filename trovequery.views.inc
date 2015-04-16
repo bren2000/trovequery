@@ -153,6 +153,18 @@ function trovequery_views_data() {
     ),
   );
 
+  $data[TROVE_RESULT]['subject'] = array(
+    'title' => t('Subject'),
+    'help' => t("Subjects describe what a work is about. A variety of vocabularies are used, including LCSH."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldSubject',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+      ),
+    ),
+  );
+
   $data[TROVE_RESULT]['comments_date'] = array(
     'title' => t('Comments date'),
     'help' => t('Comments posted on this date.'),
