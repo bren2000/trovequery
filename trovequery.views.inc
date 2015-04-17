@@ -201,6 +201,22 @@ function trovequery_views_data() {
     ),
   );
 
+  $data[TROVE_RESULT]['versionCount'] = array(
+    'title' => t('Version count'),
+    'help' => t("A work is made up of one or more versions. This is the number of versions that are grouped together to make up this work."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldString',
+    ),
+  );
+
+  $data[TROVE_RESULT]['tagCount'] = array(
+    'title' => t('Tag count'),
+    'help' => t("Tags can be placed on the work as a whole, or on a particular version that is part of the work. This element shows the number of public tags on this work or any of its versions. There is no way to access private tags through the API."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldString',
+    ),
+  );
+
   $data[TROVE_RESULT]['comments_date'] = array(
     'title' => t('Comments date'),
     'help' => t('Comments posted on this date.'),
