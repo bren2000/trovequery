@@ -170,6 +170,34 @@ function trovequery_views_data() {
     'help' => t("A description, summary, abstract, or first few words of this work, if available."),
     'field' => array(
       'handler' => 'TrovequeryHandlerFieldType',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+      ),
+    ),
+  );
+
+  $data[TROVE_RESULT]['language'] = array(
+    'title' => t('Language'),
+    'help' => t("The language/s this work is available in. More than one language element may be present."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldType',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+      ),
+    ),
+  );
+
+  $data[TROVE_RESULT]['wikipedia'] = array(
+    'title' => t('Wikipedia articles'),
+    'help' => t("Links to any known associated wikipedia articles. Includes markup."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldSnippet',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+      ),
     ),
   );
 
@@ -266,6 +294,10 @@ function trovequery_views_data() {
     'help' => t('The format of this work. There may be more than one type element.'),
     'field' => array(
       'handler' => 'TrovequeryHandlerFieldType',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'holdings',
+      ),
     ),
   );
 

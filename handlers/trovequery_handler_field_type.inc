@@ -21,7 +21,7 @@ class TrovequeryHandlerFieldType extends views_handler_field {
 
   public function query() {
     $this->field_alias = $this->real_field;
-    $this->query->add_where('', 'include', 'holdings');
+    $this->query->add_where('', $this->definition['trovequery']['arg'], $this->definition['trovequery']['value']);
   }
 
   function option_definition() {
