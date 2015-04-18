@@ -65,6 +65,10 @@ class TrovePluginQuery extends views_plugin_query {
           $this->request = new TrovequeryResult($table);
           break;
 
+        case TROVE_CONTRIBUTOR:
+          $this->request = new TrovequeryContributors($table);
+          break;
+
         default:
           break;
       }
