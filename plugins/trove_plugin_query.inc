@@ -50,14 +50,25 @@ class TrovePluginQuery extends views_plugin_query {
     // paging.
     $this->required_fields = array();
     $this->ensure_table($base_table);
-    //dpm($base_table);
   }
   /**
    * Ensure table.
    */
   public function ensure_table($table, $relationship = NULL, $join = NULL) {
     if (!isset($this->request)) {
-      $this->request = new TrovequeryResult($table);
+      switch ($table) {
+        case TROVE_NEWSPAPER_TITLES:
+          $this->request = new TrovequeryNewspaperTitlesResult($table);
+          break;
+
+        case TROVE_RESULT:
+          $this->request = new TrovequeryResult($table);
+          break;
+
+        default:
+          break;
+      }
+
     }
     //dpm($this);
   }
@@ -175,7 +186,6 @@ class TrovePluginQuery extends views_plugin_query {
    */
   public function build(&$view) {
     $this->view = $view;
-
     if (!empty($this->where)) {
       foreach ($this->where as $group_id => $group) {
         if (!empty($group['conditions'])) {
@@ -206,11 +216,10 @@ class TrovePluginQuery extends views_plugin_query {
       return;
     }
     try {
-
       $start = microtime(TRUE);
 
       if (empty($this->args['method'])) {
-        return;
+        //return;
       }
 
       // Setup pager.
