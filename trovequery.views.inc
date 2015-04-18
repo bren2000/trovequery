@@ -31,6 +31,8 @@ function trovequery_views_plugins() {
 function trovequery_views_data() {
   $data = array();
 
+  $data = newspapersTitlesViewsData();
+
   $data[TROVE_RESULT]['table']['group']  = t('Trove Results');
   $data[TROVE_RESULT]['table']['base'] = array(
     'title' => t('Trove Results'),
@@ -204,6 +206,14 @@ function trovequery_views_data() {
   $data[TROVE_RESULT]['versionCount'] = array(
     'title' => t('Version count'),
     'help' => t("A work is made up of one or more versions. This is the number of versions that are grouped together to make up this work."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldString',
+    ),
+  );
+
+  $data[TROVE_RESULT]['tagCount'] = array(
+    'title' => t('Tag count'),
+    'help' => t("Tags can be placed on the work as a whole, or on a particular version that is part of the work. This element shows the number of public tags on this work or any of its versions. There is no way to access private tags through the API."),
     'field' => array(
       'handler' => 'TrovequeryHandlerFieldString',
     ),
@@ -453,3 +463,83 @@ function trovequery_views_data() {
 
   return $data;
 }
+
+function newspapersTitlesViewsData() {
+  $newspapersData = array();
+
+  $newspapersData[TROVE_NEWSPAPER_TITLES]['table']['group']  = t('Trove newspaper titles');
+  $newspapersData[TROVE_NEWSPAPER_TITLES]['table']['base'] = array(
+    'title' => t('Trove newspaper titles'),
+    'help' => t('Query Trove newspaper titles.'),
+    'field' => 'title',
+    'query class' => 'TrovePluginQuery',
+  );
+
+  $newspapersData[TROVE_NEWSPAPER_TITLES]['title'] = array(
+    'title' => t('Title'),
+    'help' => t('The title of this newspaper.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldState',
+      ),
+    );
+
+  $newspapersData[TROVE_NEWSPAPER_TITLES]['id'] = array(
+    'title' => t('Id'),
+    'help' => t('ID of the newspaper title.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldState',
+      ),
+    );
+
+  $newspapersData[TROVE_NEWSPAPER_TITLES]['issn'] = array(
+    'title' => t('issn'),
+    'help' => t('International Standard Serial Number.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldState',
+      ),
+    );
+
+  $newspapersData[TROVE_NEWSPAPER_TITLES]['troveUrl'] = array(
+    'title' => t('troveUrl'),
+    'help' => t('A link to view this newspaper title in Trove.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldUrl',
+      ),
+    );
+
+  $newspapersData[TROVE_NEWSPAPER_TITLES]['startDate'] = array(
+    'title' => t('Date: start'),
+    'help' => t('The publication date of the easliest issue of this newspaper available in Trove.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldDate',
+      ),
+    );
+
+  $newspapersData[TROVE_NEWSPAPER_TITLES]['endDate'] = array(
+    'title' => t('Date: end'),
+    'help' => t('The publication date of the  most recently issue of this newspaper available in Trove.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldDate',
+      ),
+    );
+
+  $newspapersData[TROVE_NEWSPAPER_TITLES]['state'] = array(
+    'title' => t('State'),
+    'help' => t('The state the newspaper was primarily published in.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldState',
+      ),
+    'filter' => array(
+      'handler' => 'TrovequeryNewspapersTitlesHandlerFilterState',
+      'help' => t('Filter results based on state.'),
+      'trovequery' => array(
+        'arg' => 'state',
+        'method' => TROVE_NEWSPAPER_TITLES,
+        'optionsMethod' => 'trove_get_states',
+        ),
+      ),
+    );
+
+  return $newspapersData;
+}
+
