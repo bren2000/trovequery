@@ -31,10 +31,6 @@ function trovequery_views_plugins() {
 function trovequery_views_data() {
   $data = array();
 
-  $data = newspapersTitlesViewsData();
-
-  $data = contributorsViewsData();
-
   $data[TROVE_RESULT]['table']['group']  = t('Trove Results');
   $data[TROVE_RESULT]['table']['base'] = array(
     'title' => t('Trove Results'),
@@ -463,21 +459,15 @@ function trovequery_views_data() {
     ),
   );
 
-  return $data;
-}
-
-function newspapersTitlesViewsData() {
-  $contributorsData = array();
-
-  $contributorsData[TROVE_NEWSPAPER_TITLES]['table']['group']  = t('Trove newspaper titles');
-  $contributorsData[TROVE_NEWSPAPER_TITLES]['table']['base'] = array(
+  $data[TROVE_NEWSPAPER_TITLES]['table']['group']  = t('Trove newspaper titles');
+  $data[TROVE_NEWSPAPER_TITLES]['table']['base'] = array(
     'title' => t('Trove newspaper titles'),
     'help' => t('Query Trove newspaper titles.'),
     'field' => 'title',
     'query class' => 'TrovePluginQuery',
   );
 
-  $contributorsData[TROVE_NEWSPAPER_TITLES]['title'] = array(
+  $data[TROVE_NEWSPAPER_TITLES]['title'] = array(
     'title' => t('Title'),
     'help' => t('The title of this newspaper.'),
     'field' => array(
@@ -485,7 +475,7 @@ function newspapersTitlesViewsData() {
       ),
     );
 
-  $contributorsData[TROVE_NEWSPAPER_TITLES]['id'] = array(
+  $data[TROVE_NEWSPAPER_TITLES]['id'] = array(
     'title' => t('Id'),
     'help' => t('ID of the newspaper title.'),
     'field' => array(
@@ -493,7 +483,7 @@ function newspapersTitlesViewsData() {
       ),
     );
 
-  $contributorsData[TROVE_NEWSPAPER_TITLES]['issn'] = array(
+  $data[TROVE_NEWSPAPER_TITLES]['issn'] = array(
     'title' => t('issn'),
     'help' => t('International Standard Serial Number.'),
     'field' => array(
@@ -501,7 +491,7 @@ function newspapersTitlesViewsData() {
       ),
     );
 
-  $contributorsData[TROVE_NEWSPAPER_TITLES]['troveUrl'] = array(
+  $data[TROVE_NEWSPAPER_TITLES]['troveUrl'] = array(
     'title' => t('troveUrl'),
     'help' => t('A link to view this newspaper title in Trove.'),
     'field' => array(
@@ -509,7 +499,7 @@ function newspapersTitlesViewsData() {
       ),
     );
 
-  $contributorsData[TROVE_NEWSPAPER_TITLES]['startDate'] = array(
+  $data[TROVE_NEWSPAPER_TITLES]['startDate'] = array(
     'title' => t('Date: start'),
     'help' => t('The publication date of the easliest issue of this newspaper available in Trove.'),
     'field' => array(
@@ -517,7 +507,7 @@ function newspapersTitlesViewsData() {
       ),
     );
 
-  $contributorsData[TROVE_NEWSPAPER_TITLES]['endDate'] = array(
+  $data[TROVE_NEWSPAPER_TITLES]['endDate'] = array(
     'title' => t('Date: end'),
     'help' => t('The publication date of the  most recently issue of this newspaper available in Trove.'),
     'field' => array(
@@ -525,7 +515,7 @@ function newspapersTitlesViewsData() {
       ),
     );
 
-  $contributorsData[TROVE_NEWSPAPER_TITLES]['state'] = array(
+  $data[TROVE_NEWSPAPER_TITLES]['state'] = array(
     'title' => t('State'),
     'help' => t('The state the newspaper was primarily published in.'),
     'field' => array(
@@ -542,21 +532,15 @@ function newspapersTitlesViewsData() {
       ),
     );
 
-  return $contributorsData;
-}
-
-function contributorsViewsData() {
-  $contributorsData = array();
-
-  $contributorsData[TROVE_CONTRIBUTOR]['table']['group']  = t('Trove contributos');
-  $contributorsData[TROVE_CONTRIBUTOR]['table']['base'] = array(
+  $data[TROVE_CONTRIBUTOR]['table']['group']  = t('Trove contributos');
+  $data[TROVE_CONTRIBUTOR]['table']['base'] = array(
     'title' => t('Trove contributors'),
     'help' => t('Query Trove\'s contributors.'),
     'field' => 'name',
     'query class' => 'TrovePluginQuery',
   );
 
-  $contributorsData[TROVE_CONTRIBUTOR]['name'] = array(
+  $data[TROVE_CONTRIBUTOR]['name'] = array(
     'title' => t('Name'),
     'help' => t('The name of this contributor.'),
     'field' => array(
@@ -564,7 +548,7 @@ function contributorsViewsData() {
       ),
     );
 
-  $contributorsData[TROVE_CONTRIBUTOR]['id'] = array(
+  $data[TROVE_CONTRIBUTOR]['id'] = array(
     'title' => t('ID'),
     'help' => t('The id of this contributor.'),
     'field' => array(
@@ -572,7 +556,7 @@ function contributorsViewsData() {
       ),
     );
 
-  $contributorsData[TROVE_CONTRIBUTOR]['nuc'] = array(
+  $data[TROVE_CONTRIBUTOR]['nuc'] = array(
     'title' => t('NUC'),
     'help' => t('The NUC of this contributor.'),
     'field' => array(
@@ -580,6 +564,7 @@ function contributorsViewsData() {
       ),
     );
 
-  return $contributorsData;
+  return $data;
+
 }
 

@@ -15,6 +15,7 @@ use Drupal\trove\TroveApiNewspaperTitle;
  */
 class TrovePluginQuery extends views_plugin_query {
 
+  private $table;
   /*
    * An array of sections of the WHERE query. Each section is in itself
    * an array of pieces. All AND by default.
@@ -56,6 +57,7 @@ class TrovePluginQuery extends views_plugin_query {
    */
   public function ensure_table($table, $relationship = NULL, $join = NULL) {
     if (!isset($this->request)) {
+      $this->table = $table;
       switch ($table) {
         case TROVE_NEWSPAPER_TITLES:
           $this->request = new TrovequeryNewspaperTitlesResult($table);
@@ -232,8 +234,26 @@ class TrovePluginQuery extends views_plugin_query {
         $this->pager->set_current_page($view->current_page);
       }
 
-      $this->add_filter('n', $this->pager->options['items_per_page']);
-      $this->add_filter('s', $this->pager->current_page * $this->pager->options['items_per_page']);
+      dpm($this->pager);
+
+      // Switch for different paging methods. Only TROVE_RESULT API methods
+      // support paged results.
+      switch ($this->table) {
+        case TROVE_RESULT:
+          $this->add_filter('n', $this->pager->options['items_per_page']);
+          $this->add_filter('s', $this->pager->current_page * $this->pager->options['items_per_page']);
+          break;
+
+        case TROVE_NEWSPAPER_TITLES:
+          if($this->pager->use_pager()) {
+            $this->request->setPageing(TRUE);
+            $this->request->setPageLimit($this->pager->options['items_per_page']);
+            $this->request->setOffset($this->pager->current_page * $this->pager->options['items_per_page']);
+          }
+
+        default:
+          break;
+      }
 
       $this->request->query();
       $view->result = $this->request->parse(NULL);
