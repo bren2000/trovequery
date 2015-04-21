@@ -46,8 +46,16 @@ function trovequery_views_data() {
       'handler' => 'TrovequeryHandlerFieldTitle',
     ),
     'filter' => array(
-      'handler' => 'TrovequeryHandlerFilterField',
+      'handler' => 'TrovequeryHandlerFilterInclude',
       'help' => t('Keyword filter on the title field.'),
+      'trovequery' => array(
+        'arg' => 'q',
+        'method' => TROVE_RESULT,
+        'index' => 'title',
+      ),
+    ),
+    'argument' => array(
+      'handler' => 'TrovequeryHandlerArgumentTitle',
       'trovequery' => array(
         'arg' => 'q',
         'method' => TROVE_RESULT,
