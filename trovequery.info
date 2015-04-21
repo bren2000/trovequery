@@ -46,4 +46,4 @@ files[] = handlers/trovequery_newspapers_titles_handler_field_state.inc
 files[] = handlers/trovequery_newspapers_titles_handler_field_url.inc
 files[] = handlers/trovequery_newspapers_titles_handler_field_date.inc
 files[] = handlers/trovequery_newspapers_titles_handler_filter_state.inc
-files[] = plugins/trove_plugin_query.inc
+files[] = plugins/trovequery_plugin_query.inc

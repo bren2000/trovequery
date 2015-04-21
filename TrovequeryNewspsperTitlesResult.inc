@@ -12,9 +12,9 @@ class TrovequeryNewspaperTitlesResult extends TroveApiNewspaperTitle {
   protected $pageLimit = NULL;
 
   public function parse() {
-    dpm($this->offset . ' : ' . $this->pageing . ' : ' . $this->pageLimit);
+    //dpm($this->offset . ' : ' . $this->pageing . ' : ' . $this->pageLimit);
     $results = array();
-    dpm($this->response);
+    //dpm($this->response);
 
     if($this->pageing) {
       $this->response['response']['records']['newspaper'] = array_slice(

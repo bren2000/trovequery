@@ -234,7 +234,7 @@ class TrovePluginQuery extends views_plugin_query {
         $this->pager->set_current_page($view->current_page);
       }
 
-      dpm($this->pager);
+      //dpm($this->pager);
 
       // Switch for different paging methods. Only TROVE_RESULT API methods
       // support paged results.

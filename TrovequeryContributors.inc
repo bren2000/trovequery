@@ -11,7 +11,7 @@ class TrovequeryContributors extends TroveApiContributor {
     foreach ($this->response['response']['contributor'] as $contributor) {
       $results[] = $this->buildRow($contributor);
     }
-    dpm($results);
+    //dpm($results);
     return $results;
   }
 
