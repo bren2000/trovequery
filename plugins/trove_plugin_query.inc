@@ -79,7 +79,6 @@ class TrovePluginQuery extends views_plugin_query {
     //dpm($this);
   }
 
-
   /**
    * Get the arguments attached to the WHERE clauses of this query.
    */
@@ -213,6 +212,8 @@ class TrovePluginQuery extends views_plugin_query {
    */
   public function execute(&$view) {
 
+    //dpm($this->pager);
+
     if ($this->errors || $this->abort) {
       if (error_displayable()) {
         foreach ($this->errors as $msg) {
@@ -234,7 +235,7 @@ class TrovePluginQuery extends views_plugin_query {
         $this->pager->set_current_page($view->current_page);
       }
 
-      dpm($this->pager);
+      //dpm($this->pager);
 
       // Switch for different paging methods. Only TROVE_RESULT API methods
       // support paged results.

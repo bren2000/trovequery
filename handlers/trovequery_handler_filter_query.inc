@@ -128,8 +128,8 @@ class TrovequeryHandlerFilterQuery extends views_handler_filter_string {
    */
   public function expose_form_left(&$form, &$form_state) {
     parent::expose_form_left($form, $form_state);
-    $form['expose']['use_operator']['#access'] = FALSE;
-    $form['expose']['operator']['#access'] = FALSE;
+    //$form['expose']['use_operator']['#access'] = FALSE;
+    //$form['expose']['operator']['#access'] = FALSE;
   }
 
   /**
@@ -137,7 +137,7 @@ class TrovequeryHandlerFilterQuery extends views_handler_filter_string {
    */
   public function expose_form_right(&$form, &$form_state) {
     parent::expose_form_right($form, $form_state);
-    $form['expose']['optional']['#access'] = FALSE;
+    //$form['expose']['optional']['#access'] = FALSE;
   }
 
   /**

@@ -13,7 +13,7 @@ class TrovequeryHandlerArgumentTitle extends views_handler_argument {
 
   function query() {
     $this->field_alias = $this->real_field;
-    dpm($this->argument . ' : ' . $this->definition['trovequery']);
+    //dpm($this->argument . ' : ' . $this->definition['trovequery']);
     if (isset($this->argument, $this->definition['trovequery'])) {
       $this->query->add_where($this->options['group'],
         $this->definition['trovequery']['arg'],
@@ -60,7 +60,7 @@ class TrovequeryHandlerArgumentTitle extends views_handler_argument {
     unset($actions['summary desc']);
     unset($actions['summary asc by count']);
     unset($actions['summary desc by count']);
-    dpm($actions);
+    //dpm($actions);
     return $actions;
   }
 

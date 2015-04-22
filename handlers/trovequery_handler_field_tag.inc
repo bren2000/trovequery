@@ -26,6 +26,16 @@ class TrovequeryHandlerFieldTag extends views_handler_field {
     $this->query->add_where('', $this->definition['trovequery']['arg'], $this->definition['trovequery']['value']);
   }
 
+    /**
+   * Determine if this field can allow advanced rendering.
+   *
+   * Fields can set this to FALSE if they do not wish to allow
+   * token based rewriting or link-making.
+   */
+  function allow_advanced_render() {
+    return TRUE;
+  }
+
   /**
    * Render output based on options settings.
    */

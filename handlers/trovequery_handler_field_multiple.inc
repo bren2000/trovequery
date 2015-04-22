@@ -34,7 +34,7 @@ class TrovequeryHandlerFieldMultiple extends  views_handler_field_prerender_list
     foreach ($values as $result) {
       $items[] = $this->get_value($result, NULL, TRUE);
     }
-    dpm($holdings);
+    //dpm($holdings);
 
     if (is_array($holdings)) {
      foreach ($holdings as $key => $value) {
@@ -53,7 +53,7 @@ class TrovequeryHandlerFieldMultiple extends  views_handler_field_prerender_list
   }
 
   function render_item($count, $item) {
-    dpm($item);
+    //dpm($item);
     return $items['url'];
   }
 
