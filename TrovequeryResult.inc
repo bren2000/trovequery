@@ -7,7 +7,6 @@ class TrovequeryResult extends TroveApiResult {
 
   public function parse() {
     $results = array();
-    //dpm($this->response);
     foreach ($this->response['response']['zone'] as $zone) {
       $zoneName = $zone['name'];
       if (isset($zone['records']['work'])) {
@@ -28,7 +27,6 @@ class TrovequeryResult extends TroveApiResult {
         }
       }
     }
-    dpm($results);
     return $results;
   }
 

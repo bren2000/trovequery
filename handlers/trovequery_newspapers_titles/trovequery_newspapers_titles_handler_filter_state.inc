@@ -141,7 +141,7 @@ class TrovequeryNewspapersTitlesHandlerFilterState extends views_handler_filter_
         $form_state['input'][$identifier] = $default_value;
       }
 
-      if ($which == 'all') {
+      if ($which == 'all' || $which == '') {
         if (empty($form_state['exposed']) && (in_array($this->value_form_type, array('checkbox', 'checkboxes', 'radios', 'select')))) {
           $form['value']['#prefix'] = '<div id="edit-options-value-wrapper">';
           $form['value']['#suffix'] = '</div>';
