@@ -41,6 +41,8 @@ class TrovePluginQuery extends views_plugin_query {
    */
   protected $abort = FALSE;
 
+  protected $joins = array();
+
   /**
    * Constructor; Create the basic query object and fill with default values.
    */
@@ -59,6 +61,7 @@ class TrovePluginQuery extends views_plugin_query {
     if (!isset($this->request)) {
       $this->table = $table;
       switch ($table) {
+
         case TROVE_NEWSPAPER_TITLES:
           $this->request = new TrovequeryNewspaperTitlesResult($table);
           break;
@@ -69,6 +72,10 @@ class TrovePluginQuery extends views_plugin_query {
 
         case TROVE_CONTRIBUTOR:
           $this->request = new TrovequeryContributors($table);
+          break;
+
+        case TROVE_RECORD_NEWSPAPER:
+          $this->request = new TrovequeryNewspaper($table);
           break;
 
         default:
@@ -173,6 +180,19 @@ class TrovePluginQuery extends views_plugin_query {
       'value' => $value,
     );
   }
+
+  function add_relationship($left_table, $left_field, $right_table, $right_field) {
+    if (isset($this->requests[$left_table])) {
+      $this->ensure_table($right_table);
+      $this->add_field($left_table, $left_field);
+      $this->joins[$left_table][$left_field] = array(
+        'table' => $right_table,
+        'field' => $right_field,
+      );
+    }
+    return FALSE;
+  }
+
   /**
    * Set a filter on the query object.
    */

@@ -572,6 +572,48 @@ function trovequery_views_data() {
       ),
     );
 
+  $data[TROVE_RECORD_NEWSPAPER]['table']['group']  = t('Trove newspaper record');
+  $data[TROVE_RECORD_NEWSPAPER]['table']['base'] = array(
+    'title' => t('Trove newspaper record'),
+    'help' => t('Query Trove newspaper records.'),
+    'field' => 'title',
+    'query class' => 'TrovePluginQuery',
+  );
+
+  $data[TROVE_RECORD_NEWSPAPER]['title'] = array(
+    'title' => t('Title'),
+    'help' => t('The title of this newspaper.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldTitle',
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['id'] = array(
+    'title' => t('ID'),
+    'help' => t('The id of this newspaper.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldState',
+      ),
+    'filter' => array(
+      'handler' => 'TrovequeryNewspaperRecordHandlerFilterString',
+      'trovequery' => array(
+        'arg' => 'id',
+        ),
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['lastCorrection'] = array(
+    'title' => t('Last correction'),
+    'help' => t('Further information about the most recent correction to this article. The correction itself is not included.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperRecordHandlerFieldLastCorrection',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
   return $data;
 
 }
