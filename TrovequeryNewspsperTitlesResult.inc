@@ -11,7 +11,7 @@ class TrovequeryNewspaperTitlesResult extends TroveApiNewspaperTitle {
 
   protected $pageLimit = NULL;
 
-  public function parse() {
+  public function parse($joins = NULL) {
     $results = array();
     //dpm($this->response);
 

@@ -5,7 +5,7 @@ use Drupal\trove\TroveApiContributor;
 
 class TrovequeryContributors extends TroveApiContributor {
 
-  public function parse() {
+  public function parse($joins = NULL) {
     $results = array();
     //dpm($this->response);
     foreach ($this->response['response']['contributor'] as $contributor) {

@@ -5,7 +5,7 @@ use Drupal\trove\TroveApiResult;
 
 class TrovequeryResult extends TroveApiResult {
 
-  public function parse() {
+  public function parse($joins = NULL) {
     $results = array();
     foreach ($this->response['response']['zone'] as $zone) {
       $zoneName = $zone['name'];

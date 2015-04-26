@@ -119,6 +119,15 @@ function trovequery_views_data() {
         'index' => 'id',
       ),
     ),
+    'relationship' => array(
+      'handler' => 'TrovequeryRelationship',
+      'base' => TROVE_RECORD_NEWSPAPER,
+      'trovequery' => array(
+        'arg' => 'q',
+        'method' => TROVE_RECORD_NEWSPAPER,
+       ),
+      'label' => t('id'),
+    ),
   );
 
   $data[TROVE_RESULT]['tag'] = array(
@@ -610,6 +619,74 @@ function trovequery_views_data() {
       'trovequery' => array(
         'arg' => 'reclevel',
         'value' => 'full',
+        ),
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['heading'] = array(
+    'title' => t('Heading'),
+    'help' => t('The article heading.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['category'] = array(
+    'title' => t('Category'),
+    'help' => t('The type of article.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['edition'] = array(
+    'title' => t('Edition'),
+    'help' => t('If this article appeared in a special newspaper/periodical edition, the name of that edition is included here.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['date'] = array(
+    'title' => t('Date'),
+    'help' => t('When the issue this article belongs to was published. YYYY-MM-DD.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['page'] = array(
+    'title' => t('Page'),
+    'help' => t('Determine the sequence of delivery of the pages in an issue.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['pageSequence'] = array(
+    'title' => t('Page Sequence'),
+    'help' => t('In addition to the page sequence number, indicates if the article is part of a supplement/section.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['pageLabel'] = array(
+    'title' => t('Page Label'),
+    'help' => t('Sometimes used to indicate what is printed on the page, or perhaps the page number within a section/supplement. Sometimes numeric and sometimes not.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['articleText'] = array(
+    'title' => t('Article text'),
+    'help' => t('The full text of the article, including all corrections. Article paragraphs are enclosed in a <p> element.  Lines are enclosed by <span>. Article text is not available for some articles, such as those from the Australian Women’s Weekly, and articles with a status of “coming soon”. For these articles, there will be no articleText element present'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'articletext',
         ),
       ),
     );

@@ -5,7 +5,7 @@ use Drupal\trove\TroveApiRecord;
 
 class TrovequeryNewspaper extends TroveApiRecord {
 
-  public function parse() {
+  public function parse($joins = NULL) {
     $results = array();
     dpm($this->response);
     $results[] = $this->buildRow($this->response['article']);

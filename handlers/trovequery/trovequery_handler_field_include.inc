@@ -42,17 +42,11 @@ class TrovequeryHandlerFieldInclude extends views_handler_field {
   }
 
   /**
-   * Add the filter to the query.
-   */
-  public function pre_query() {
-    $this->query->add_where('', $this->definition['trovequery']['arg'], $this->definition['trovequery']['value']);
-  }
-
-  /**
    * Called to add the field to a query.
    */
   public function query() {
     $this->field_alias = $this->real_field;
+    $this->query->add_where('', $this->definition['trovequery']['arg'], $this->definition['trovequery']['value']);
   }
 
   /**
