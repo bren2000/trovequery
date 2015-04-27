@@ -691,6 +691,141 @@ function trovequery_views_data() {
       ),
     );
 
+  $data[TROVE_RECORD_NEWSPAPER]['comment'] = array(
+    'title' => t('Comment'),
+    'help' => t('A public comment added to the article. There may be more than one comment element.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldComment',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'comments',
+        ),
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['pdf'] = array(
+    'title' => t('PDF'),
+    'help' => t('A link leading to the pdf for the page this article appears on. There may be more than one pdf element if the article appears over multiple pages.
+PDFs are not available for some articles, such as the Australian Women’s Weekly, and articles with a status of “coming soon”.
+.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperRecordHandlerFieldPdf',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['troveUrl'] = array(
+    'title' => t('Trove URL'),
+    'help' => t('A link to view this article in the Trove web interface. If this record was retrieved in response to a search, the search terms will be included in the URL which allows them to be highlighted when viewing in the article. '),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldUrl',
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['trovePageUrl'] = array(
+    'title' => t('Trove page URL'),
+    'help' => t('A link to view the first page of this article, in the Trove web interface. This is not available for articles with a status of “coming soon”.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldUrl',
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['supplement'] = array(
+    'title' => t('Supplement'),
+    'help' => t('The newspaper/periodical section this article appeared in. In the Trove web interface, this is shown on the page view. A supplement is part of an issue.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['illustrated'] = array(
+    'title' => t('Illustrated'),
+    'help' => t('Flags whether the article is illustrated or not.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+
+  $data[TROVE_RECORD_NEWSPAPER]['section'] = array(
+    'title' => t('Section'),
+    'help' => t('The newspaper/periodical section this article appeared in. In the Trove web interface, this is shown on the page view. A section is part of an issue.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['wordCount'] = array(
+    'title' => t('Word count'),
+    'help' => t('The number of words in the full text of the article.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['correctionCount'] = array(
+    'title' => t('Correction count'),
+    'help' => t('The number of corrections made to the article. Each correction may involve many lines.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['listCount'] = array(
+    'title' => t('List count'),
+    'help' => t('The number of public Trove user created lists this article has been added to.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['tagCount'] = array(
+    'title' => t('Tag count'),
+    'help' => t('The number of public tags added to this article by Trove users.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
+  $data[TROVE_RECORD_NEWSPAPER]['commentCount'] = array(
+    'title' => t('Comment count'),
+    'help' => t('The number of public comments added to this article by Trove users.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
   return $data;
 
 }

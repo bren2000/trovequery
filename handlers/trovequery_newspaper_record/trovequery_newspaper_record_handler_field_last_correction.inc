@@ -30,18 +30,17 @@ class TrovequeryNewspaperRecordHandlerFieldLastCorrection extends views_handler_
    * Render output based on options settings.
    */
   public function render($values) {
-    dpm($values->{$this->field});
     if (isset($values->{$this->field}) && is_array($values->{$this->field})) {
       $last_updated = array();
       $tmp = 'By: ' . $values->{$this->field}['by'];
       $tmp .= ' Date: ' . $values->{$this->field}['lastupdated'];
       $last_updated[] = $tmp;
-      dpm($tmp);
+
+      return theme('item_list', array('items' => $last_updated,
+        'type' => 'ol',
+        'title' => NULL,
+        'attributes' => array()));
     }
-    return theme('item_list', array('items' => $last_updated,
-      'type' => 'ol',
-      'title' => NULL,
-      'attributes' => array()));
   }
 
 }

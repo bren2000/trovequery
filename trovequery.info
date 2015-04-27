@@ -52,3 +52,4 @@ files[] = handlers/trovequery_newspapers_titles/trovequery_newspapers_titles_han
 files[] = handlers/trovequery_newspapers_titles/trovequery_newspapers_titles_handler_filter_state.inc
 files[] = handlers/trovequery_newspaper_record/trovequery_newspaper_record_handler_filter_id.inc
 files[] = handlers/trovequery_newspaper_record/trovequery_newspaper_record_handler_field_last_correction.inc
+files[] = handlers/trovequery_newspaper_record/trovequery_newspaper_record_handler_field_pdf.inc
