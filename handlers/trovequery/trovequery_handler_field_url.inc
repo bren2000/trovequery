@@ -19,7 +19,6 @@ class TrovequeryHandlerFieldUrl extends views_handler_field_url {
   public function query() {
     $this->field_alias = $this->real_field;
     if (is_array($this->definition['trovequery'])) {
-      dpm('slsl');
       $this->query->add_where('', $this->definition['trovequery']['arg'], $this->definition['trovequery']['value']);
     }
   }

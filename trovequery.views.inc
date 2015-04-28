@@ -681,7 +681,7 @@ function trovequery_views_data() {
 
   $data[TROVE_RECORD_NEWSPAPER]['articleText'] = array(
     'title' => t('Article text'),
-    'help' => t('The full text of the article, including all corrections. Article paragraphs are enclosed in a <p> element.  Lines are enclosed by <span>. Article text is not available for some articles, such as those from the Australian Women’s Weekly, and articles with a status of “coming soon”. For these articles, there will be no articleText element present'),
+    'help' => t('The full text of the article, including all corrections. Article paragraphs are enclosed in a &lt;p&gt; element.  Lines are enclosed by &lt;span&gt;. Article text is not available for some articles, such as those from the Australian Women’s Weekly, and articles with a status of “coming soon”. For these articles, there will be no articleText element present'),
     'field' => array(
       'handler' => 'TrovequeryHandlerFieldInclude',
       'trovequery' => array(
@@ -705,8 +705,7 @@ function trovequery_views_data() {
 
   $data[TROVE_RECORD_NEWSPAPER]['pdf'] = array(
     'title' => t('PDF'),
-    'help' => t('A link leading to the pdf for the page this article appears on. There may be more than one pdf element if the article appears over multiple pages.
-PDFs are not available for some articles, such as the Australian Women’s Weekly, and articles with a status of “coming soon”.
+    'help' => t('A link leading to the pdf for the page this article appears on. There may be more than one pdf element if the article appears over multiple pages. PDFs are not available for some articles, such as the Australian Women’s Weekly, and articles with a status of “coming soon”.
 .'),
     'field' => array(
       'handler' => 'TrovequeryNewspaperRecordHandlerFieldPdf',
