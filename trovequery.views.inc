@@ -942,6 +942,42 @@ function trovequery_views_data() {
       ),
     );
 
+    $data[TROVE_RECORD_LIST]['troveUrl'] = array(
+    'title' => t('Trove URL'),
+    'help' => t('A link to view this list in the Trove web interface.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldUrl',
+      ),
+    );
+
+    $data[TROVE_RECORD_LIST]['creator'] = array(
+    'title' => t('Creator'),
+    'help' => t('The username of the person who created the list. (Anonymous lists are not allowed.)'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+    $data[TROVE_RECORD_LIST]['listItemCount'] = array(
+    'title' => t('List item count'),
+    'help' => t('The number of items in the list.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+    $data[TROVE_RECORD_LIST]['description'] = array(
+    'title' => t('Description'),
+    'help' => t('The description of the list. May be quite long. May contain markup.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
   return $data;
 
 }
