@@ -24,6 +24,8 @@ class TrovequeryHandlerFieldList extends views_handler_field {
   public function option_definition() {
     $options = parent::option_definition();
     $options['render_html'] = array('default' => FALSE);
+    $options['include_lastupdate'] = array('default' => FALSE);
+    $options['include_author'] = array('default' => FALSE);
     return $options;
   }
 
@@ -31,11 +33,18 @@ class TrovequeryHandlerFieldList extends views_handler_field {
    * Defines the options form.
    */
   public function options_form(&$form, &$form_state) {
-    $form['render_html'] = array(
-      '#title' => t('Render HTML'),
-      '#description' => t('By default, HTML returned from the Trove API is escaped and will not render. Checking this option will disable this behavior and allow the HTML to render. Note that this could be a security problem if Trove filtering of dangerous HTML has problems.'),
+    $form['include_lastupdate'] = array(
+      '#title' => t('Include last updated date'),
+      '#description' => t('Checking this will include the list last updated date.'),
       '#type' => 'checkbox',
-      '#default_value' => $this->options['render_html'],
+      '#default_value' => $this->options['include_lastupdate'],
+      '#weight' => 1,
+    );
+    $form['include_author'] = array(
+      '#title' => t('Include list author'),
+      '#description' => t('Checking this will include the list author username.'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->options['include_author'],
       '#weight' => 1,
     );
     parent::options_form($form, $form_state);
@@ -56,15 +65,13 @@ class TrovequeryHandlerFieldList extends views_handler_field {
     if (isset($values->{$this->field}) && is_array($values->{$this->field})) {
       $lists = array();
       foreach ($values->{$this->field} as $list) {
-        if ($this->options['render_html']) {
-          $tmp = 'List: ' . $list['value'];
+        $tmp = check_plain($list['value']);
+        if ($this->options['include_author']) {
+          $tmp .= ' <span class="list-author">By: ' . $list['by'] . '</span>';
         }
-        else {
-          $tmp = 'List: ' . check_plain($list['value']);
+        if ($this->options['include_lastupdate']) {
+          $tmp .= ' <span class="list-lastupdated">Last updated: ' . $list['lastupdated'] . '</span> ';
         }
-        $tmp .= ', By: <span class="list-author">' . $list['by'];
-        $tmp .= '</span>, Last updated: <span class="list-last-updated">' . $list['lastupdated'];
-        $tmp .= '</span>';
         $lists[] = $tmp;
       }
       return theme('item_list', array('items' => $lists,
