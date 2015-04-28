@@ -842,13 +842,26 @@ PDFs are not available for some articles, such as the Australian Women’s Weekl
     'title' => t('Lists'),
     'help' => t('The name of a public, user created list this article belongs to. There may be more than one list element.'),
     'field' => array(
-      'handler' => 'TrovequeryNewspaperRecordHandlerFieldLastCorrection',
+      'handler' => 'TrovequeryHandlerFieldList',
       'trovequery' => array(
         'arg' => 'include',
         'value' => 'lists',
         ),
       ),
     );
+
+  $data[TROVE_RECORD_NEWSPAPER]['identifier'] = array(
+    'title' => t('Identifier'),
+    'help' => t('The article identifier. This URL leads to the article view on the Trove web interface.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldUrl',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
   return $data;
 
 }
