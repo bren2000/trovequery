@@ -966,6 +966,22 @@ function trovequery_views_data() {
       ),
     );
 
+    $data[TROVE_RECORD_LIST]['tagCount'] = array(
+    'title' => t('Tag count'),
+    'help' => t('The number of tags on this list.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
+    $data[TROVE_RECORD_LIST]['commentCount'] = array(
+    'title' => t('Comment count'),
+    'help' => t('The number of comments on this list.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      ),
+    );
+
     $data[TROVE_RECORD_LIST]['description'] = array(
     'title' => t('Description'),
     'help' => t('The description of the list. May be quite long. May contain markup.'),
@@ -977,6 +993,56 @@ function trovequery_views_data() {
         ),
       ),
     );
+
+    $data[TROVE_RECORD_LIST]['tag'] = array(
+    'title' => t('Tags'),
+    'help' => t('A public tag added to the list. There may be more than one tag element.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldTag',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'tags',
+        ),
+      ),
+    );
+
+    $data[TROVE_RECORD_LIST]['created'] = array(
+    'title' => t('Created'),
+    'help' => t('When the list was created.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldDate',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
+
+    $data[TROVE_RECORD_LIST]['lastupdated'] = array(
+    'title' => t('Last updated'),
+    'help' => t('When the list was last changed. '),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldDate',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+    );
+
+    $data[TROVE_RECORD_LIST]['comment'] = array(
+    'title' => t('Comment'),
+    'help' => t('A public comment added to the list. There may be more than one comment element.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldComment',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'comments',
+        ),
+      ),
+    );
+
 
   return $data;
 
