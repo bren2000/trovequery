@@ -7,8 +7,11 @@
 use Drupal\trove\TroveApi;
 use Drupal\trove\TroveApiContributor;
 use Drupal\trove\TroveApiResult;
-use Drupal\trove\TroveApiRecord;
 use Drupal\trove\TroveApiNewspaperTitle;
+use Drupal\trove\TroveApiNewspaperRecord;
+use Drupal\trove\TroveApiList;
+use Drupal\trove\TroveApiWorkRecord;
+
 
 /**
  * Views query plugin for the Trove Query results.
@@ -76,6 +79,14 @@ class TrovePluginQuery extends views_plugin_query {
 
         case TROVE_RECORD_NEWSPAPER:
           $this->request = new TrovequeryNewspaper($table);
+          break;
+
+        case TROVE_RECORD_WORK:
+          $this->request = new TrovequeryWork($table);
+          break;
+
+        case TROVE_RECORD_LIST:
+          $this->request = new TrovequeryList($table);
           break;
 
         default:

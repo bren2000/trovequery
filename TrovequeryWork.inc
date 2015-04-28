@@ -1,14 +1,14 @@
 <?php
 
 use Drupal\trove\troveApi;
-use Drupal\trove\TroveApiNewspaperRecord;
+use Drupal\trove\TroveApiWorkRecord;
 
-class TrovequeryNewspaper extends TroveApiNewspaperRecord {
+class TrovequeryWork extends TroveApiWorkRecord {
 
   public function parse($joins = NULL) {
     $results = array();
     dpm($this->response);
-    $results[] = $this->buildRow($this->response['article']);
+    $results[] = $this->buildRow($this->response['work']);
     dpm($results);
     return $results;
   }

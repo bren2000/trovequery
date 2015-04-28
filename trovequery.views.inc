@@ -11,7 +11,9 @@
 use Drupal\trove\TroveApi;
 use Drupal\trove\TroveApiContributor;
 use Drupal\trove\TroveApiResult;
-use Drupal\trove\TroveApiRecord;
+use Drupal\trove\TroveApiWorkRecord;
+use Drupal\trove\TroveApiNewspaperRecord;
+use Drupal\trove\TroveApiList;
 use Drupal\trove\TroveApiNewspaperTitle;
 
 function trovequery_views_plugins() {
@@ -861,6 +863,37 @@ function trovequery_views_data() {
       ),
     );
 
+  $data[TROVE_RECORD_WORK]['table']['group']  = t('Trove work record');
+  $data[TROVE_RECORD_WORK]['table']['base'] = array(
+    'title' => t('Trove work record'),
+    'help' => t('Query Trove work records.'),
+    'field' => 'title',
+    'query class' => 'TrovePluginQuery',
+  );
+
+  $data[TROVE_RECORD_WORK]['title'] = array(
+    'title' => t('Title'),
+    'help' => t('The title of this work.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldTitle',
+      ),
+    );
+
+  $data[TROVE_RECORD_WORK]['id'] = array(
+    'title' => t('ID'),
+    'help' => t('The id of this work.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldState',
+      ),
+    'filter' => array(
+      'handler' => 'TrovequeryNewspaperRecordHandlerFilterString',
+      'trovequery' => array(
+        'arg' => 'id',
+        ),
+      ),
+    );
+
+
   // $handlerzz = array();
   // foreach ($data as $base) {
   //   foreach ($base as $field) {
@@ -877,6 +910,37 @@ function trovequery_views_data() {
 
   // $handlerzz = array_unique($handlerzz);
   // dpm($handlerzz);
+  //
+
+  $data[TROVE_RECORD_LIST]['table']['group']  = t('Trove list');
+  $data[TROVE_RECORD_LIST]['table']['base'] = array(
+    'title' => t('Trove list'),
+    'help' => t('Query Trove lists.'),
+    'field' => 'title',
+    'query class' => 'TrovePluginQuery',
+  );
+
+  $data[TROVE_RECORD_LIST]['title'] = array(
+    'title' => t('Title'),
+    'help' => t('The title of this list.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldTitle',
+      ),
+    );
+
+  $data[TROVE_RECORD_LIST]['id'] = array(
+    'title' => t('ID'),
+    'help' => t('The id of this list.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldState',
+      ),
+    'filter' => array(
+      'handler' => 'TrovequeryNewspaperRecordHandlerFilterString',
+      'trovequery' => array(
+        'arg' => 'id',
+        ),
+      ),
+    );
 
   return $data;
 
