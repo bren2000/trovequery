@@ -861,6 +861,23 @@ function trovequery_views_data() {
       ),
     );
 
+  // $handlerzz = array();
+  // foreach ($data as $base) {
+  //   foreach ($base as $field) {
+  //     foreach ($field as $key => $value) {
+  //       switch ($key) {
+  //         case 'field':
+  //         case 'filter':
+  //           $handlerzz[] = $value['handler'];
+  //           break;
+  //       }
+  //     }
+  //   }
+  // }
+
+  // $handlerzz = array_unique($handlerzz);
+  // dpm($handlerzz);
+
   return $data;
 
 }
