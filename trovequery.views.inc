@@ -514,7 +514,7 @@ function trovequery_views_data() {
     'title' => t('troveUrl'),
     'help' => t('A link to view this newspaper title in Trove.'),
     'field' => array(
-      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldUrl',
+      'handler' => 'TrovequeryHandlerFieldUrl',
       ),
     );
 

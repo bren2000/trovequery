@@ -308,6 +308,11 @@ class TrovePluginQuery extends views_plugin_query {
       }
 
       $this->request->query();
+
+      $joins = array();
+      if (isset($this->joins)) {
+        $joins = $this->joins;
+      }
       $view->result = $this->request->parse($joins);
       //$view->result = $this->request->parse(NULL);
 
