@@ -893,25 +893,6 @@ function trovequery_views_data() {
       ),
     );
 
-
-  // $handlerzz = array();
-  // foreach ($data as $base) {
-  //   foreach ($base as $field) {
-  //     foreach ($field as $key => $value) {
-  //       switch ($key) {
-  //         case 'field':
-  //         case 'filter':
-  //           $handlerzz[] = $value['handler'];
-  //           break;
-  //       }
-  //     }
-  //   }
-  // }
-
-  // $handlerzz = array_unique($handlerzz);
-  // dpm($handlerzz);
-  //
-
   $data[TROVE_RECORD_LIST]['table']['group']  = t('Trove list');
   $data[TROVE_RECORD_LIST]['table']['base'] = array(
     'title' => t('Trove list'),
@@ -1043,8 +1024,28 @@ function trovequery_views_data() {
       ),
     );
 
-
+  printViewsData($data);
   return $data;
 
+}
+
+function printViewsData($data) {
+    $handlerzz = array();
+    foreach ($data as $base) {
+      foreach ($base as $field) {
+        foreach ($field as $key => $value) {
+          switch ($key) {
+            case 'field':
+            case 'filter':
+              $handlerzz[] = $value['handler'];
+              break;
+          }
+        }
+      }
+    }
+
+    $handlerzz = array_unique($handlerzz);
+    dpm($handlerzz);
+  
 }
 
