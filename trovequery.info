@@ -49,7 +49,6 @@ files[] = handlers/trovecontrib_handler_filter_query.inc
 files[] = handlers/trovequery/trovequery_relationship.inc
 files[] = handlers/trovequery_newspapers_titles/trovequery_newspapers_titles_handler_field_title.inc
 files[] = handlers/trovequery_newspapers_titles/trovequery_newspapers_titles_handler_field_state.inc
-files[] = handlers/trovequery_newspapers_titles/trovequery_newspapers_titles_handler_field_url.inc
 files[] = handlers/trovequery_newspapers_titles/trovequery_newspapers_titles_handler_field_date.inc
 files[] = handlers/trovequery_newspapers_titles/trovequery_newspapers_titles_handler_filter_state.inc
 files[] = handlers/trovequery_newspaper_record/trovequery_newspaper_record_handler_filter_id.inc
