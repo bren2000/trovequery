@@ -193,36 +193,8 @@ class TrovePluginQuery extends views_plugin_query {
   }
 
   function add_relationship($alias, $join, $base, $link_point = NULL) {
-  //   if (isset($this->requests[$left_table])) {
-  //     $this->ensure_table($right_table);
-  //     $this->add_field($left_table, $left_field);
-  //     $this->joins[$left_table][$left_field] = array(
-  //       'table' => $right_table,
-  //       'field' => $right_field,
-  //     );
-  //   }
-  //   return FALSE;
-    $this->joins[$right_table] = array('method' => $method, 'arg' => $arg);
+    $this->joins[$this->table] = array('method' => $base, 'arg' => $link_point);
   }
-
-
-  // // from WPAPI
-  // function add_relationship($left_table, $left_field, $right_table, $right_field) {
-  //   if (isset($this->requests[$left_table])) {
-  //     $this->ensure_table($right_table);
-  //     $this->add_field($left_table, $left_field);
-  //     $this->joins[$left_table][$left_field] = array(
-  //       'table' => $right_table,
-  //       'field' => $right_field,
-  //     );
-  //   }
-  //   return FALSE;
-  // }
-
-  // // from lastfm
-  // function add_relationship($right_table, $method, $arg) {
-  //   $this->joins[$right_table] = array('method' => $method, 'arg' => $arg);
-  // }
 
   /**
    * Set a filter on the query object.
