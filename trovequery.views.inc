@@ -121,14 +121,47 @@ function trovequery_views_data() {
         'index' => 'id',
       ),
     ),
+  );
+
+  $data[TROVE_RESULT]['list_id'] = array(
+    'title' => t('Trove list relationship'),
+    'help' => t('Example list help'),
     'relationship' => array(
-      'handler' => 'TrovequeryRelationship',
-      'base' => TROVE_RECORD_NEWSPAPER,
-      'trovequery' => array(
-        'arg' => 'q',
-        'method' => TROVE_RECORD_NEWSPAPER,
-       ),
-      'label' => t('id'),
+      'base' => TROVE_RECORD_LIST, // Table we're joining to.
+      'base field' => 'id', // Field on the joined table.
+      'field' => 'id', // Real field name on the 'foo' table.
+      'handler' => 'TrovequeryNewspaperRelationship',
+      'label' => t('List record'),
+      'title' => t('List record'),
+      'help' => t('Relate a list recrd to its full record.'),
+    ),
+  );
+
+ $data[TROVE_RESULT]['work_id'] = array(
+    'title' => t('Trove work relationship'),
+    'help' => t('Example work help'),
+    'relationship' => array(
+      'base' => TROVE_RECORD_WORK, // Table we're joining to.
+      'base field' => 'id', // Field on the joined table.
+      'field' => 'id', // Real field name on the 'foo' table.
+      'handler' => 'TrovequeryNewspaperRelationship',
+      'label' => t('Work record'),
+      'title' => t('Work record'),
+      'help' => t('Relate a work recrd to its full record.'),
+    ),
+  );
+
+ $data[TROVE_RESULT]['newspaper_id'] = array(
+    'title' => t('Trove newspaper relationship'),
+    'help' => t('Example newspaper help'),
+    'relationship' => array(
+      'base' => TROVE_RECORD_NEWSPAPER, // Table we're joining to.
+      'base field' => 'id', // Field on the joined table.
+      'field' => 'id', // Real field name on the 'foo' table.
+      'handler' => 'TrovequeryNewspaperRelationship',
+      'label' => t('Newspaper record'),
+      'title' => t('Newspaper record'),
+      'help' => t('Relate a newspaper recrd to its full record.'),
     ),
   );
 
