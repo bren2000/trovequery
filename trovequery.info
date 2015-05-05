@@ -15,6 +15,7 @@ files[] = TrovequeryWork.inc
 files[] = TrovequeryList.inc
 files[] = handlers/trovequery/trovequery_handler_argument_index.inc
 files[] = handlers/trovequery/trovequery_handler_argument_query.inc
+files[] = handlers/trovequery/trovequery_handler_argument_include.inc
 files[] = handlers/trovequery/trovequery_handler_field.inc
 files[] = handlers/trovequery/trovequery_handler_field_comment.inc
 files[] = handlers/trovequery/trovequery_handler_field_multiple.inc

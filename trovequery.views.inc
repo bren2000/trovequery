@@ -66,6 +66,34 @@ function trovequery_views_data() {
     ),
   );
 
+  $data[TROVE_RESULT]['subject'] = array(
+    'title' => t('Subject'),
+    'help' => t("Subjects describe what a work is about. A variety of vocabularies are used, including LCSH."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldSubject',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+      ),
+    ),
+    'filter' => array(
+      'handler' => 'TrovequeryHandlerFilterIncludeString',
+      'help' => t('Filter on the subject index.'),
+      'trovequery' => array(
+        'arg' => 'q',
+        'method' => TROVE_RESULT,
+        'index' => 'subject',
+      ),
+    ),
+    'argument' => array(
+      'handler' => 'TrovequeryHandlerArgumentIndex',
+      'trovequery' => array(
+        'arg' => 'q',
+        'index' => 'subject',
+      ),
+    ),
+  );
+
   $data[TROVE_RESULT]['isbn'] = array(
     'title' => t('ISBN'),
     'help' => t('The ISBN for this result.'),
@@ -202,18 +230,6 @@ function trovequery_views_data() {
     'help' => t("For articles, the journal or periodical this article belongs to (if known)."),
     'field' => array(
       'handler' => 'TrovequeryHandlerFieldPartOf',
-    ),
-  );
-
-  $data[TROVE_RESULT]['subject'] = array(
-    'title' => t('Subject'),
-    'help' => t("Subjects describe what a work is about. A variety of vocabularies are used, including LCSH."),
-    'field' => array(
-      'handler' => 'TrovequeryHandlerFieldSubject',
-      'trovequery' => array(
-        'arg' => 'reclevel',
-        'value' => 'full',
-      ),
     ),
   );
 
