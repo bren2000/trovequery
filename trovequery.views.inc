@@ -57,7 +57,7 @@ function trovequery_views_data() {
       ),
     ),
     'argument' => array(
-      'handler' => 'TrovequeryHandlerArgumentTitle',
+      'handler' => 'TrovequeryHandlerArgumentIndex',
       'trovequery' => array(
         'arg' => 'q',
         'method' => TROVE_RESULT,
@@ -382,6 +382,13 @@ function trovequery_views_data() {
     'help' => t('The query keywords'),
     'filter' => array(
       'handler' => 'TrovequeryHandlerFilterQuery',
+      'trovequery' => array(
+        'arg' => 'q',
+        'method' => TROVE_RESULT,
+      ),
+    ),
+    'argument' => array(
+      'handler' => 'TrovequeryHandlerArgumentQuery',
       'trovequery' => array(
         'arg' => 'q',
         'method' => TROVE_RESULT,

@@ -1,6 +1,6 @@
 <?php
 
-class TrovequeryHandlerArgumentTitle extends views_handler_argument {
+class TrovequeryHandlerArgumentQuery   extends views_handler_argument {
   // /**
   //  * The following functions express SQLisms in the base handler class. They
   //  * are all blanked out in overrides.
@@ -15,9 +15,9 @@ class TrovequeryHandlerArgumentTitle extends views_handler_argument {
     $this->field_alias = $this->real_field;
     //dpm($this->argument . ' : ' . $this->definition['trovequery']);
     if (isset($this->argument, $this->definition['trovequery'])) {
-      $this->query->add_where($this->options['group'],
-        $this->definition['trovequery']['arg'],
-        $this->definition['trovequery']['index'] . ':' . $this->argument);
+      if (isset($this->definition['trovequery'])) {
+        $this->query->add_where('', $this->definition['trovequery']['arg'], $this->argument);
+      }
     }
   }
 
