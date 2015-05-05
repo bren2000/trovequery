@@ -651,6 +651,12 @@ function trovequery_views_data() {
         'arg' => 'id',
         ),
       ),
+    'argument' => array(
+      'handler' => 'TrovequeryHandlerArgumentQuery',
+      'trovequery' => array(
+        'arg' => 'id',
+        ),
+      ),
     );
 
   $data[TROVE_RECORD_NEWSPAPER]['lastCorrection'] = array(
@@ -931,6 +937,12 @@ function trovequery_views_data() {
         'arg' => 'id',
         ),
       ),
+    'argument' => array(
+      'handler' => 'TrovequeryHandlerArgumentQuery',
+      'trovequery' => array(
+        'arg' => 'id',
+      ),
+    ),
     );
 
   $data[TROVE_RECORD_LIST]['table']['group']  = t('Trove list');
