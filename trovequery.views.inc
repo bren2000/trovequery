@@ -1148,6 +1148,30 @@ function trovequery_views_data() {
     ),
   );
 
+  $data[TROVE_RECORD_WORK]['abstract'] = array(
+    'title' => t('Abstract'),
+    'help' => t("A description, summary, abstract, or first few words of this work, if available."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldType',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+      ),
+    ),
+  );
+
+  $data[TROVE_RECORD_WORK]['language'] = array(
+    'title' => t('Language'),
+    'help' => t("The language/s this work is available in. More than one language element may be present."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldString',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+      ),
+    ),
+  );
+
 
   return $data;
 
