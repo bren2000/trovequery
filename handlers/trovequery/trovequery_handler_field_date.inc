@@ -18,7 +18,7 @@ class TrovequeryHandlerFieldDate extends views_handler_field_date {
    */
   public function query() {
     $this->field_alias = $this->real_field;
-    if (is_array($this->definition['trovequery'])) {
+    if (isset($this->definition['trovequery'])) {
       $this->query->add_where('', $this->definition['trovequery']['arg'], $this->definition['trovequery']['value']);
     }
   }
