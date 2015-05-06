@@ -285,14 +285,6 @@ function trovequery_views_data() {
     ),
   );
 
-  $data[TROVE_RESULT]['tagCount'] = array(
-    'title' => t('Tag count'),
-    'help' => t("Tags can be placed on the work as a whole, or on a particular version that is part of the work. This element shows the number of public tags on this work or any of its versions. There is no way to access private tags through the API."),
-    'field' => array(
-      'handler' => 'TrovequeryHandlerFieldString',
-    ),
-  );
-
   $data[TROVE_RESULT]['comments_date'] = array(
     'title' => t('Comments date'),
     'help' => t('Comments posted on this date.'),
@@ -1164,7 +1156,7 @@ function trovequery_views_data() {
     'title' => t('Language'),
     'help' => t("The language/s this work is available in. More than one language element may be present."),
     'field' => array(
-      'handler' => 'TrovequeryHandlerFieldString',
+      'handler' => 'TrovequeryHandlerFieldType',
       'trovequery' => array(
         'arg' => 'reclevel',
         'value' => 'full',
@@ -1172,6 +1164,92 @@ function trovequery_views_data() {
     ),
   );
 
+  $data[TROVE_RECORD_WORK]['holdingsCount'] = array(
+    'title' => t('Holdings count'),
+    'help' => t('The number of organisations (libraries, archives, etc) who have a copy of this work.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldNumeric',
+      'click sortable' => FALSE,
+    ),
+  );
+
+  $data[TROVE_RECORD_WORK]['versionCount'] = array(
+    'title' => t('Version count'),
+    'help' => t("A work is made up of one or more versions. This is the number of versions that are grouped together to make up this work."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldString',
+    ),
+  );
+
+  $data[TROVE_RECORD_WORK]['tagCount'] = array(
+    'title' => t('Tag count'),
+    'help' => t("Tags can be placed on the work as a whole, or on a particular version that is part of the work. This element shows the number of public tags on this work or any of its versions. There is no way to access private tags through the API."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldString',
+    ),
+  );
+
+
+  $data[TROVE_RECORD_WORK]['commentCount'] = array(
+    'title' => t('Comment count'),
+    'help' => t('The number of public comments added to this article by Trove users.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+  );
+
+
+  $data[TROVE_RECORD_WORK]['listCount'] = array(
+    'title' => t('List count'),
+    'help' => t('The number of public Trove user created lists this article has been added to.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldInclude',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+        ),
+      ),
+  );
+
+  $data[TROVE_RECORD_WORK]['tag'] = array(
+    'title' => t('Tag'),
+    'help' => t('Tags associated with this item.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldTag',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'tags',
+      ),
+    ),
+  );
+
+  $data[TROVE_RECORD_WORK]['comment'] = array(
+    'title' => t('Comment'),
+    'help' => t('Comments associated with this item.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldComment',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'comments',
+      ),
+    ),
+  );
+
+  $data[TROVE_RECORD_WORK]['list'] = array(
+    'title' => t('Lists'),
+    'help' => t('Lists associated with this item.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldList',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'lists',
+      ),
+    ),
+  );
 
   return $data;
 
@@ -1194,6 +1272,6 @@ function printViewsData($data) {
 
     $handlerzz = array_unique($handlerzz);
     dpm($handlerzz);
-  
+
 }
 
