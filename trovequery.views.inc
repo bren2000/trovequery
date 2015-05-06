@@ -925,42 +925,6 @@ function trovequery_views_data() {
       ),
     );
 
-  $data[TROVE_RECORD_WORK]['table']['group']  = t('Trove work record');
-  $data[TROVE_RECORD_WORK]['table']['base'] = array(
-    'title' => t('Trove work record'),
-    'help' => t('Query Trove work records.'),
-    'field' => 'title',
-    'query class' => 'TrovePluginQuery',
-  );
-
-  $data[TROVE_RECORD_WORK]['title'] = array(
-    'title' => t('Title'),
-    'help' => t('The title of this work.'),
-    'field' => array(
-      'handler' => 'TrovequeryHandlerFieldTitle',
-      ),
-    );
-
-  $data[TROVE_RECORD_WORK]['id'] = array(
-    'title' => t('ID'),
-    'help' => t('The id of this work.'),
-    'field' => array(
-      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldState',
-      ),
-    'filter' => array(
-      'handler' => 'TrovequeryNewspaperRecordHandlerFilterString',
-      'trovequery' => array(
-        'arg' => 'id',
-        ),
-      ),
-    'argument' => array(
-      'handler' => 'TrovequeryHandlerArgumentQuery',
-      'trovequery' => array(
-        'arg' => 'id',
-      ),
-    ),
-    );
-
   $data[TROVE_RECORD_LIST]['table']['group']  = t('Trove list');
   $data[TROVE_RECORD_LIST]['table']['base'] = array(
     'title' => t('Trove list'),
@@ -1092,7 +1056,99 @@ function trovequery_views_data() {
       ),
     );
 
-  printViewsData($data);
+  $data[TROVE_RECORD_WORK]['table']['group']  = t('Trove work record');
+  $data[TROVE_RECORD_WORK]['table']['base'] = array(
+    'title' => t('Trove work record'),
+    'help' => t('Query Trove work records.'),
+    'field' => 'title',
+    'query class' => 'TrovePluginQuery',
+  );
+
+  $data[TROVE_RECORD_WORK]['title'] = array(
+    'title' => t('Title'),
+    'help' => t('The title of this work.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldTitle',
+      ),
+    );
+
+  $data[TROVE_RECORD_WORK]['id'] = array(
+    'title' => t('ID'),
+    'help' => t('The id of this work.'),
+    'field' => array(
+      'handler' => 'TrovequeryNewspaperTitlesHandlerFieldState',
+      ),
+    'filter' => array(
+      'handler' => 'TrovequeryNewspaperRecordHandlerFilterString',
+      'trovequery' => array(
+        'arg' => 'id',
+        ),
+      ),
+    'argument' => array(
+      'handler' => 'TrovequeryHandlerArgumentQuery',
+      'trovequery' => array(
+        'arg' => 'id',
+      ),
+    ),
+  );
+
+  $data[TROVE_RECORD_WORK]['troveUrl'] = array(
+    'title' => t('Trove URL'),
+    'help' => t('The Trove URL of this result.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldUrl',
+    ),
+  );
+
+   $data[TROVE_RECORD_WORK]['contributor'] = array(
+    'title' => t('Contributor'),
+    'help' => t('The main creator of this work. Some works have multiple creators listed, others have only one even if multiple creators exist.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldContributor',
+    ),
+  );
+
+  $data[TROVE_RECORD_WORK]['issued'] = array(
+    'title' => t('Date issued'),
+    'help' => t('The year/s this work was issued, created or published. May also include month and day. May be a range.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldString',
+    ),
+  );
+
+   $data[TROVE_RECORD_WORK]['type'] = array(
+    'title' => t('Type'),
+    'help' => t('The format of this work. There may be more than one type element.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldType',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'holdings',
+      ),
+    ),
+  );
+
+  $data[TROVE_RECORD_WORK]['isPartOf'] = array(
+    'title' => t('Is part of'),
+    'help' => t("For articles, the journal or periodical this article belongs to (if known)."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldPartOf',
+    ),
+  );
+
+   $data[TROVE_RECORD_WORK]['subject'] = array(
+    'title' => t('Subject'),
+    'help' => t("Subjects describe what a work is about. A variety of vocabularies are used, including LCSH."),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldSubject',
+      'trovequery' => array(
+        'arg' => 'reclevel',
+        'value' => 'full',
+      ),
+    ),
+  );
+
+
   return $data;
 
 }
