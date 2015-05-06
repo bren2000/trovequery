@@ -11,7 +11,7 @@ class TrovequeryHandlerArgumentQuery   extends views_handler_argument {
   // function summary_basics($count_field = TRUE) { }
   // function summary_sort($order, $by = NULL) { }
 
-  function query() {
+  function query($group_by = false) {
     $this->field_alias = $this->real_field;
     //dpm($this->argument . ' : ' . $this->definition['trovequery']);
     if (isset($this->argument, $this->definition['trovequery'])) {
