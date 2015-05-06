@@ -48,8 +48,12 @@ class TrovequeryHandlerFieldPartOf extends views_handler_field {
    */
   public function render($values) {
     if (isset($values->{$this->field})) {
+      //dpm($values);
       if (isset($values->{$this->field}['value'])){
         $value = $values->{$this->field}['value'];
+      }
+      else {
+        $value = $values->{$this->field};
       }
       if (isset($values->{$this->field}['url']) && $this->options['render_link'] == TRUE) {
         $path = $values->{$this->field}['url'];
