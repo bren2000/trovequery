@@ -24,8 +24,8 @@ class TrovequeryHandlerFieldImage extends views_handler_field {
    * Render the field.
    */
   public function render($values) {
-    if (isset($values->{$this->field}) && is_array($values->{$this->field})) {
-      foreach ($values->{$this->field} as $identifier) {
+    if (isset($values->{$this->real_field}) && is_array($values->{$this->real_field})) {
+      foreach ($values->{$this->real_field} as $identifier) {
         if (isset($identifier['linktype']) && $identifier['linktype'] == 'thumbnail') {
           $path = $identifier['value'];
         }

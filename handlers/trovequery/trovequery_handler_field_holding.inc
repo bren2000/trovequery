@@ -39,6 +39,10 @@ class TrovequeryHandlerFieldHolding extends views_handler_field {
       'default' => ''
     );
 
+    $options['show_call_number'] = array(
+      'default' => FALSE
+    );
+
     return $options;
   }
 
@@ -61,6 +65,13 @@ class TrovequeryHandlerFieldHolding extends views_handler_field {
   function multiple_options_form(&$form, &$form_state) {
     $field = $this->field_info;
 
+    $form['show_call_number'] = array(
+      '#title' => t('Show call number'),
+      '#description' => t('Each holding record may have many call numbers.'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->options['show_call_number'],
+      '#weight' => 1,
+    );
     $form['multiple_field_settings'] = array(
       '#type' => 'fieldset',
       '#title' => t('Multiple field settings'),
@@ -122,7 +133,7 @@ class TrovequeryHandlerFieldHolding extends views_handler_field {
         if($key == 'url') {
           $holding[] = 'URL: ' . l($value['type'], $value['value']);
         }
-        if($key == 'callNumber') {
+        if($key == 'callNumber' && $this->options['show_call_number']) {
           $holding['children']['data'] = 'Call number:';
           if (is_array($value)) {
             foreach ($value as $cn) {

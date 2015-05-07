@@ -161,7 +161,7 @@ function trovequery_views_data() {
       'handler' => 'TrovequeryNewspaperRelationship',
       'label' => t('List record'),
       'title' => t('List record'),
-      'help' => t('Relate a list recrd to its full record.'),
+      'help' => t('Relate a list record to its full record.'),
     ),
   );
 
@@ -1239,7 +1239,7 @@ function trovequery_views_data() {
     ),
   );
 
-  $data[TROVE_RECORD_WORK]['list'] = array(
+    $data[TROVE_RECORD_WORK]['list'] = array(
     'title' => t('Lists'),
     'help' => t('Lists associated with this item.'),
     'field' => array(
@@ -1250,6 +1250,50 @@ function trovequery_views_data() {
       ),
     ),
   );
+
+  $data[TROVE_RECORD_WORK]['identifier-1'] = array(
+    'title' => t('Identifier: fulltext, restricted, not online, unknown'),
+    'help' => t('Linktype - If available, the best known link to this work is included automatically.'),
+    'real field' => 'identifier',
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldIdentifier',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'links',
+        ),
+      ),
+  );
+
+  $data[TROVE_RECORD_WORK]['identifier-2'] = array(
+    'title' => t('Identifier: subscription'),
+    'help' => t('Linktype - A link to access this work through a particular organisation’s subscription.'),
+    'real field' => 'identifier',
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldIdentifier',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'subscribinglibs',
+        ),
+      ),
+  );
+
+  $data[TROVE_RECORD_WORK]['identifier-3'] = array(
+    'title' => t('Identifier: thumbnail'),
+    'help' => t('Linktype - If available, a link to a thumbnail-sized image representing this item.'),
+    'real field' => 'identifier',
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldImage',
+    ),
+  );
+
+  $data[TROVE_RECORD_WORK]['holding'] = array(
+    'title' => t('Holdings'),
+    'help' => t('The NUC symbol of an organisation with a copy of this work.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldHolding',
+    ),
+  );
+
 
   return $data;
 
