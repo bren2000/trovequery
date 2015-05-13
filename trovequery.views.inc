@@ -350,6 +350,7 @@ function trovequery_views_data() {
       'help' => t('Limit results to items with comments.'),
       'label' => t('The item has comments?'),
       'type' => 'yes-no',
+      'form type' => 'checkbox',
       'trovequery' => array(
         'arg' => 'q',
         'method' => TROVE_RESULT,
