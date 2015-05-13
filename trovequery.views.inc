@@ -208,6 +208,7 @@ function trovequery_views_data() {
       'help' => t('Limit results to tagged items.'),
       'label' => t('The item has tags?'),
       'use equal' => TRUE,
+      'type' => 'yes-no',
       'trovequery' => array(
         'arg' => 'q',
         'method' => TROVE_RESULT,
@@ -348,6 +349,7 @@ function trovequery_views_data() {
       'handler' => 'TrovequeryHandlerFilterInclude',
       'help' => t('Limit results to items with comments.'),
       'label' => t('The item has comments?'),
+      'type' => 'yes-no',
       'trovequery' => array(
         'arg' => 'q',
         'method' => TROVE_RESULT,

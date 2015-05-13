@@ -18,14 +18,11 @@ class TrovequeryHandlerFilterInclude extends views_handler_filter_boolean_operat
     }
   }
 
-  /**
-   * Sets the'value options'.
-   */
-  public function get_value_options() {
-    $this->value_options = array(
-      1 => t('Yes'),
-      0 => t('No'),
-    );
+  function expose_options() {
+    parent::expose_options();
+    $this->options['expose']['operator_id'] = '';
+    $this->options['expose']['label'] = $this->value_value;
+    $this->options['expose']['required'] = FALSE;
   }
 
 }

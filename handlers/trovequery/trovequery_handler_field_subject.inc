@@ -24,6 +24,9 @@ class TrovequeryHandlerFieldSubject extends views_handler_field {
     $options['list_class'] = array(
       'default' => ''
       );
+    $options['separator'] = array(
+      'default' => ', '
+    );
     return $options;
   }
 
@@ -31,6 +34,15 @@ class TrovequeryHandlerFieldSubject extends views_handler_field {
    * Defines the options form.
    */
   public function options_form(&$form, &$form_state) {
+    $form['subject_link_settings'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Subject link settings'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+      '#weight' => 4,
+    );
+
+
     $form['multiple_field_settings'] = array(
       '#type' => 'fieldset',
       '#title' => t('Multiple field settings'),
@@ -44,9 +56,20 @@ class TrovequeryHandlerFieldSubject extends views_handler_field {
       '#options' => array(
         'ul' => t('Unordered list'),
         'ol' => t('Ordered list'),
+        'separator' => t('Simple separator'),
       ),
       '#dependency' => array('edit-options-group-rows' => array(TRUE)),
       '#default_value' => $this->options['multi_type'],
+      '#fieldset' => 'multiple_field_settings',
+    );
+    $form['separator'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Separator'),
+      '#default_value' => $this->options['separator'],
+      '#dependency' => array(
+        'radio:options[multi_type]' => array('separator'),
+      ),
+      '#dependency_count' => 1,
       '#fieldset' => 'multiple_field_settings',
     );
     $form['list_class'] = array(
@@ -73,10 +96,15 @@ class TrovequeryHandlerFieldSubject extends views_handler_field {
       foreach ($values->{$this->field} as $subject) {
         $subjects[] = $subject;
       }
-      return theme('item_list', array('items' => $subjects,
-        'type' => 'ol',
-        'title' => NULL,
-        'attributes' => array()));
+      if ($this->options['multi_type'] == 'separator') {
+        return implode(filter_xss_admin($this->options['separator']), $subjects);
+     }
+      else {
+        return theme('item_list', array('items' => $subjects,
+          'type' => 'ol',
+          'title' => NULL,
+          'attributes' => array()));
+      }
     }
   }
 
