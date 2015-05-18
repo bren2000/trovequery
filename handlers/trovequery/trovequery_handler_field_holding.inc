@@ -129,7 +129,7 @@ class TrovequeryHandlerFieldHolding extends views_handler_field {
     }
   }
 
-  function themeHolding($arr) {
+  function themeList($arr) {
     return theme_item_list(array(
             'items' => $arr,
             'title' => NULL,
@@ -170,7 +170,7 @@ class TrovequeryHandlerFieldHolding extends views_handler_field {
       return implode(filter_xss_admin($this->options['separator']), $holding);
     }
     else {
-      return $this->themeHolding($holding);
+      return $this->themeList($holding);
     }
   }
 }

@@ -11,10 +11,16 @@ class TrovequeryHandlerFilterInclude extends views_handler_filter_boolean_operat
    */
   public function query() {
     $this->field_alias = $this->real_field;
+    //dpm($this);
     if (isset($this->value, $this->definition['trovequery'])) {
-      $this->query->add_where('',
-        $this->definition['trovequery']['arg'],
-        $this->definition['trovequery']['index'] . ':' . $this->definition['trovequery']['value']);
+      if (($this->field == 'tag' || $this->field == 'comment') && $this->value == 0) {
+        // no need to add a filter.
+      }
+      else {
+        $this->query->add_where($this->options['group'],
+          $this->definition['trovequery']['arg'],
+          $this->definition['trovequery']['index'] . ':' . $this->definition['trovequery']['value']);
+      }
     }
   }
 
@@ -57,13 +63,6 @@ class TrovequeryHandlerFilterInclude extends views_handler_filter_boolean_operat
         $form['value']['#options'] = array('All' => $any_label) + $form['value']['#options'];
       }
     }
-  }
-
-  function expose_options() {
-    parent::expose_options();
-    $this->options['expose']['operator_id'] = '';
-    $this->options['expose']['label'] = $this->value_value;
-    $this->options['expose']['required'] = FALSE;
   }
 
 }

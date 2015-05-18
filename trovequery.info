@@ -12,6 +12,7 @@ files[] = TrovequeryNewspsperTitlesResult.inc
 files[] = TrovequeryContributors.inc
 files[] = TrovequeryNewspaper.inc
 files[] = TrovequeryWork.inc
+files[] = TrovequeryWorkVersion.inc
 files[] = TrovequeryList.inc
 files[] = handlers/trovequery/trovequery_handler_argument_index.inc
 files[] = handlers/trovequery/trovequery_handler_argument_query.inc

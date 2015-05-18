@@ -35,7 +35,7 @@ function trovequery_views_data() {
 
   $data[TROVE_RESULT]['table']['group']  = t('Trove Results');
   $data[TROVE_RESULT]['table']['base'] = array(
-    'title' => t('Trove Results'),
+    'title' => t('Trove results'),
     'help' => t('Query Trove.'),
     'field' => 'title',
     'query class' => 'TrovePluginQuery',
@@ -175,7 +175,7 @@ function trovequery_views_data() {
       'handler' => 'TrovequeryNewspaperRelationship',
       'label' => t('Work record'),
       'title' => t('Work record'),
-      'help' => t('Relate a work recrd to its full record.'),
+      'help' => t('Relate a work record to its full record.'),
     ),
   );
 
@@ -189,7 +189,7 @@ function trovequery_views_data() {
       'handler' => 'TrovequeryNewspaperRelationship',
       'label' => t('Newspaper record'),
       'title' => t('Newspaper record'),
-      'help' => t('Relate a newspaper recrd to its full record.'),
+      'help' => t('Relate a newspaper record to its full record.'),
     ),
   );
 
@@ -207,8 +207,10 @@ function trovequery_views_data() {
       'handler' => 'TrovequeryHandlerFilterInclude',
       'help' => t('Limit results to tagged items.'),
       'label' => t('The item has tags?'),
-      'use equal' => TRUE,
       'type' => 'yes-no',
+      'form type' => 'checkbox',
+      'accept null' => TRUE,
+      'use equal' => TRUE,
       'trovequery' => array(
         'arg' => 'q',
         'method' => TROVE_RESULT,
@@ -1297,6 +1299,63 @@ function trovequery_views_data() {
     ),
   );
 
+  $data['trove_record_work_version']['table']['group']  = t('Trove work record versions');
+  $data['trove_record_work_version']['table']['base'] = array(
+    'title' => t('Trove work record version'),
+    'help' => t('Query Trove work record versions.'),
+    'field' => 'title',
+    'query class' => 'TrovePluginQuery',
+  );
+
+  $data['trove_record_work_version']['id'] = array(
+    'title' => t('ID'),
+    'help' => t('The id of this work version.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerField',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'workversions',
+      ),
+      ),
+    'filter' => array(
+      'handler' => 'TrovequeryNewspaperRecordHandlerFilterString',
+      'trovequery' => array(
+        'arg' => 'id',
+        ),
+      ),
+    'argument' => array(
+      'handler' => 'TrovequeryHandlerArgumentQuery',
+      'trovequery' => array(
+        'arg' => 'id',
+      ),
+    ),
+  );
+
+  $data['trove_record_work_version']['title'] = array(
+    'title' => t('Title'),
+    'help' => t('The title of this version.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldTitle',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'workversions',
+      ),
+    ),
+  );
+
+  $data['trove_record_work_version']['comment'] = array(
+    'title' => t('Comment'),
+    'help' => t('Comments associated with this item.'),
+    'field' => array(
+      'handler' => 'TrovequeryHandlerFieldComment',
+      'trovequery' => array(
+        'arg' => 'include',
+        'value' => 'comments',
+      ),
+    ),
+  );
+
+  dpm($data);
 
   return $data;
 
@@ -1304,8 +1363,12 @@ function trovequery_views_data() {
 
 function printViewsData($data) {
     $handlerzz = array();
+    $fieldzz = array();
+    $filterz = array();
     foreach ($data as $base) {
+      $fieldzz[] = key($base);
       foreach ($base as $field) {
+
         foreach ($field as $key => $value) {
           switch ($key) {
             case 'field':
@@ -1319,6 +1382,7 @@ function printViewsData($data) {
 
     $handlerzz = array_unique($handlerzz);
     dpm($handlerzz);
+    dpm($fieldzz);
 
 }
 

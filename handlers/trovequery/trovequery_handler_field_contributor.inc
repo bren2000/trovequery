@@ -25,6 +25,9 @@ class TrovequeryHandlerFieldContributor extends views_handler_field {
     $options['list_class'] = array(
       'default' => ''
       );
+    $options['separator'] = array(
+      'default' => ', '
+    );
     return $options;
   }
 
@@ -39,15 +42,26 @@ class TrovequeryHandlerFieldContributor extends views_handler_field {
       '#collapsed' => TRUE,
       '#weight' => 5,
     );
-    $form['multi_type'] = array(
+     $form['multi_type'] = array(
       '#type' => 'radios',
       '#title' => t('Display type'),
       '#options' => array(
         'ul' => t('Unordered list'),
         'ol' => t('Ordered list'),
+        'separator' => t('Simple separator'),
       ),
       '#dependency' => array('edit-options-group-rows' => array(TRUE)),
       '#default_value' => $this->options['multi_type'],
+      '#fieldset' => 'multiple_field_settings',
+    );
+     $form['separator'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Separator'),
+      '#default_value' => $this->options['separator'],
+      '#dependency' => array(
+        'radio:options[multi_type]' => array('separator'),
+      ),
+      '#dependency_count' => 1,
       '#fieldset' => 'multiple_field_settings',
     );
     $form['list_class'] = array(
@@ -60,7 +74,7 @@ class TrovequeryHandlerFieldContributor extends views_handler_field {
     parent::options_form($form, $form_state);
   }
 
-  function themeContributor($arr) {
+  function themeList($arr) {
     return theme_item_list(array(
             'items' => $arr,
             'title' => NULL,
@@ -82,7 +96,12 @@ class TrovequeryHandlerFieldContributor extends views_handler_field {
       foreach ($values->{$this->field} as $key => $value) {
         $contributor[] = $value;
       }
-      return $this->themeContributor($contributor);
+      if ($this->options['multi_type'] == 'separator') {
+        return implode(filter_xss_admin($this->options['separator']), $contributor);
+      }
+      else {
+        return $this->themeList($contributor);
+      }
     }
   }
 

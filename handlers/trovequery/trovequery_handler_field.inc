@@ -18,6 +18,9 @@ class TrovequeryHandlerField extends views_handler_field {
    */
   public function query() {
     $this->field_alias = $this->real_field;
+    if (is_array($this->definition['trovequery'])) {
+      $this->query->add_where('', $this->definition['trovequery']['arg'], $this->definition['trovequery']['value']);
+    }
   }
 
 }

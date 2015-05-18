@@ -89,6 +89,10 @@ class TrovePluginQuery extends views_plugin_query {
           $this->request = new TrovequeryList($table);
           break;
 
+        case 'trove_record_work_version':
+          $this->request = new TrovequeryWorkVersion(TROVE_RECORD_WORK);
+          break;
+
         default:
           break;
       }

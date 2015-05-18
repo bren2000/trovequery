@@ -7,9 +7,9 @@ class TrovequeryNewspaper extends TroveApiNewspaperRecord {
 
   public function parse($joins = NULL) {
     $results = array();
-    dpm($this->response);
+    //dpm($this->response);
     $results[] = $this->buildRow($this->response['article']);
-    dpm($results);
+    //dpm($results);
     return $results;
   }
 

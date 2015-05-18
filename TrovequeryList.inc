@@ -7,9 +7,9 @@ class TrovequeryList extends TroveApiList {
 
   public function parse($joins = NULL) {
     $results = array();
-    dpm($this->response);
+    //dpm($this->response);
     $results[] = $this->buildRow($this->response['list']);
-    dpm($results);
+    //dpm($results);
     return $results;
   }
 
