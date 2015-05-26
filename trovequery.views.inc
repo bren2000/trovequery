@@ -353,6 +353,7 @@ function trovequery_views_data() {
       'label' => t('The item has comments?'),
       'type' => 'yes-no',
       'form type' => 'checkbox',
+      'options callback' => 'TrovequeryHandlerFilterInclude::getInOptions',
       'trovequery' => array(
         'arg' => 'q',
         'method' => TROVE_RESULT,

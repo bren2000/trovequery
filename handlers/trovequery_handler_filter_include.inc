@@ -4,7 +4,7 @@
  * Views field handler for basic Trove Query fields.
  */
 
-class TrovequeryHandlerFilterInclude extends views_handler_filter_boolean_operator {
+class TrovequeryHandlerFilterInclude extends views_handler_filter_in_operator {
 
   /**
    * Called to add the field to a query.
@@ -22,6 +22,10 @@ class TrovequeryHandlerFilterInclude extends views_handler_filter_boolean_operat
           $this->definition['trovequery']['index'] . ':' . $this->definition['trovequery']['value']);
       }
     }
+  }
+
+  public static function getInOptions() {
+    return array(1 => 'Yes');
   }
 
   // function value_form(&$form, &$form_state) {
